@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Миндаль — студия маникюра в Сергиевом Посаде. Маникюр, педикюр, дизайн</title>
+<meta name="description" content="Студия маникюра «Миндаль» в Сергиевом Посаде: маникюр с покрытием, педикюр, дизайн. Галерея работ, расчёт стоимости онлайн и гарантия 7 дней.">
+<style>
+:root{--bg:#fbf6f3;--nude:#f3e3dc;--rose:#d98f8a;--rose2:#c4706b;--ink:#231a19;--muted:#857470;--line:#ecdcd5;--paper:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-block;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:14px 26px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--rose2)}
+.btn.rose{background:var(--rose)}.btn.rose:hover{background:var(--rose2)}
+header .wrap{display:flex;align-items:center;gap:24px;height:74px}
+.logo{font-size:24px;font-weight:300;letter-spacing:.32em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+.logo b{font-weight:700;color:var(--rose2)}
+header nav{margin-left:auto;display:flex;gap:24px;font-size:15px}header nav a{color:var(--muted);text-decoration:none}
+.hero{padding:20px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(44px,6vw,82px);font-weight:300;line-height:1;letter-spacing:-.03em}
+.hero h1 b{font-weight:700}
+.hero h1 em{font-family:Georgia,serif;color:var(--rose2)}
+.hero p{font-size:19px;color:var(--muted);margin:22px 0 28px;max-width:520px}
+.perks{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.perks span{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pics img{border-radius:24px;object-fit:cover;width:100%;height:100%}
+.pics .a{grid-row:span 2;aspect-ratio:3/5}
+.pics .b,.pics .c{aspect-ratio:1}
+section{padding:80px 0}
+h2{font-size:clamp(32px,4vw,50px);font-weight:300;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+h2 b{font-weight:700}
+.sub{color:var(--muted);font-size:18px;max-width:620px;margin-bottom:28px}
+/* галерея */
+.flt{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.flt button{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 18px;cursor:pointer;color:var(--ink)}
+.flt button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gal{columns:4 220px;column-gap:14px}
+.gal figure{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:20px;overflow:hidden;cursor:zoom-in}
+.gal img{width:100%;transition:.4s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 12px;font-size:13px}
+.lb{position:fixed;inset:0;background:rgba(35,26,25,.88);display:none;place-items:center;z-index:60;padding:20px;cursor:zoom-out}
+.lb.show{display:grid}
+.lb img{max-height:86vh;border-radius:16px}
+.lb p{color:#fff;text-align:center;margin-top:10px}
+/* калькулятор */
+.calc{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:28px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.opt:last-child{border-bottom:0}
+.opt small{display:block;color:var(--muted);font-size:13px}
+.seg{display:inline-flex;background:var(--nude);border-radius:999px;padding:4px}
+.seg button{font:inherit;font-size:14px;border:0;background:none;padding:7px 12px;border-radius:999px;cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--paper);box-shadow:0 2px 8px -3px rgba(0,0,0,.2);font-weight:600}
+.sw{position:relative;width:48px;height:28px;flex:none}
+.sw input{opacity:0;width:0;height:0}
+.sw span{position:absolute;inset:0;background:var(--line);border-radius:999px;transition:.2s;cursor:pointer}
+.sw span::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
+.sw input:checked+span{background:var(--rose)}.sw input:checked+span::after{transform:translateX(20px)}
+input[type=range]{accent-color:var(--rose2);width:150px}
+.result{background:var(--ink);color:#fff;border-radius:26px;padding:30px;display:grid;gap:14px;align-content:start;position:sticky;top:20px}
+.result .big{font-size:52px;font-weight:300;line-height:1}
+.result .muted{color:#c9b9b4;font-size:14px}
+.result ul{list-style:none;padding:0;display:grid;gap:6px;font-size:15px}
+.result li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed #4a3b39;padding-bottom:6px}
+.result input{font:inherit;border:0;border-radius:14px;padding:12px 14px;width:100%}
+.bad{outline:2px solid #ff8f87}
+.err{color:#ffb3ad;font-size:14px}
+.okm{display:none;background:#3a2b29;border-radius:14px;padding:14px;font-size:15px}
+/* гарантия */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.trust div{background:var(--nude);border-radius:22px;padding:22px}
+.trust b{display:block;font-size:30px;font-weight:300}
+.trust p{font-size:14px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:960px){.hero .wrap,.calc{grid-template-columns:1fr}.trust{grid-template-columns:1fr 1fr}header nav{display:none}.result{position:static}}
+@media (max-width:560px){.opt{flex-wrap:wrap}.trust{grid-template-columns:1fr}.box{padding:20px}.seg button{padding:7px 9px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Мин<b>даль</b></a>
+  <nav><a href="#works">Работы</a><a href="#calc">Стоимость</a><a href="#trust">Гарантия</a></nav>
+  <a class="btn" href="#calc" style="padding:10px 20px">Записаться</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <h1><b>Маникюр</b>, который держится <em>три недели</em></h1>
+    <p>Аппаратный маникюр, укрепление и дизайн в тихой студии на четыре кресла. Стерильные инструменты из крафт-пакета — вскрываем при вас.</p>
+    <a class="btn rose" href="#calc">Рассчитать и записаться</a>
+    <div class="perks"><span>4,8 ★ · 403 отзыва</span><span>Гарантия 7 дней на скол</span><span>Кофе и чай — бесплатно</span></div>
+  </div>
+  <div class="pics">
+    <img class="a" src="img/hero.jpg" alt="Мастер делает маникюр клиентке" width="1600" height="1067">
+    <img class="b" src="img/pink.jpg" alt="Нюдовый маникюр" width="900" height="1436">
+    <img class="c" src="img/glitter.jpg" alt="Маникюр с блёстками" width="900" height="900">
+  </div>
+</div></section>
+
+<section id="works" style="padding-top:0"><div class="wrap">
+  <h2><b>Работы</b> мастеров</h2>
+  <p class="sub">Нажмите на фото — откроется крупно. Понравился дизайн? Покажите мастеру — повторим.</p>
+  <div class="flt" id="flt"></div>
+  <div class="gal" id="gal"></div>
+</div></section>
+
+<section id="calc" style="padding-top:0"><div class="wrap">
+  <h2><b>Сколько</b> это будет стоить</h2>
+  <p class="sub">Соберите процедуру — цена и время посчитаются сразу. Итог фиксируем при записи.</p>
+  <div class="calc">
+    <div class="box" id="opts"></div>
+    <form class="result" id="res" novalidate>
+      <span class="muted">Итого</span>
+      <div class="big" id="sum">0 ₽</div>
+      <span class="muted" id="dur"></span>
+      <ul id="lines"></ul>
+      <select name="slot" style="font:inherit;border:0;border-radius:14px;padding:12px 14px" id="slot"></select>
+      <input name="name" placeholder="Имя" autocomplete="given-name">
+      <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel">
+      <p class="err" id="err"></p>
+      <button class="btn rose">Записаться</button>
+      <div class="okm" id="ok"></div>
+    </form>
+  </div>
+</div></section>
+
+<section id="trust" style="padding-top:0"><div class="wrap">
+  <h2><b>Почему</b> к нам возвращаются</h2>
+  <p class="sub">Девять из десяти клиенток записываются на следующий раз прямо после процедуры.</p>
+  <div class="trust">
+    <div><b>7 дней</b><p>Гарантия: скол или отслойка — исправим бесплатно</p></div>
+    <div><b>3 этапа</b><p>Стерилизации инструментов, крафт-пакет вскрываем при вас</p></div>
+    <div><b>200+</b><p>Оттенков гель-лака: от нюда до неона</p></div>
+    <div><b>1,5 ч</b><p>Маникюр с покрытием — без спешки, но и без ожидания</p></div>
+  </div>
+  <img src="img/shelf.jpg" alt="Палитра гель-лаков на полках" loading="lazy" style="border-radius:26px;margin-top:16px;width:100%;max-height:420px;object-fit:cover">
+</div></section>
+
+<footer><div class="wrap"><span>Сергиев Посад, проспект Красной Армии, 90 · ежедневно 9:00–21:00 · <a href="tel:+74960000000" style="color:var(--ink)">+7 496 000-00-00</a></span><span>Демонстрационный сайт: название и отзывы вымышлены. Фото: Unsplash</span></div></footer>
+<div class="lb" id="lb"><div><img id="lbImg" alt=""><p id="lbCap"></p></div></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+const WORKS = [['pink', 'Нюд', 'Нюдовый «молочный»'], ['tortoise', 'Дизайн', 'Черепаховый дизайн'], ['glitter', 'Блёстки', 'Лаванда и блёстки'], ['marble', 'Дизайн', 'Мраморный френч'],
+  ['ornate', 'Дизайн', 'Точки и стразы'], ['pink2', 'Нюд', 'Розовый нюд, миндаль'], ['hero', 'Френч', 'Классический френч'], ['tools', 'Френч', 'Подготовка к покрытию']];
+const CATS = ['Все', 'Нюд', 'Френч', 'Дизайн', 'Блёстки'];
+let cat = 'Все';
+function drawGal() {
+  $('flt').innerHTML = CATS.map(c => `<button class="${c === cat ? 'on' : ''}">${c}</button>`).join('');
+  $('gal').innerHTML = WORKS.filter(w => cat === 'Все' || w[1] === cat).map(([img, c, t]) => `<figure data-img="${img}" data-t="${t}"><img src="img/${img}.jpg" alt="${t}" loading="lazy"><figcaption>${t}</figcaption></figure>`).join('');
+}
+$('flt').onclick = e => { if (e.target.tagName !== 'BUTTON') return; cat = e.target.textContent; drawGal(); };
+$('gal').onclick = e => { const f = e.target.closest('figure'); if (!f) return; $('lbImg').src = `img/${f.dataset.img}.jpg`; $('lbImg').alt = f.dataset.t; $('lbCap').textContent = f.dataset.t; $('lb').classList.add('show'); };
+$('lb').onclick = () => $('lb').classList.remove('show');
+addEventListener('keydown', e => e.key === 'Escape' && $('lb').classList.remove('show'));
+
+// калькулятор: цена и минуты
+const S = {svc: 1, len: 0, remove: true, design: 0, strong: false, pedi: false};
+const SVC = [['Без покрытия', 900, 45], ['С гель-лаком', 1900, 90], ['Наращивание', 3200, 150]];
+const LEN = [['Короткие', 0], ['Средние', 200], ['Длинные', 500]];
+function drawOpts() {
+  const seg = (k, arr) => `<div class="seg">${arr.map((a, i) => `<button type="button" data-k="${k}" data-v="${i}" class="${S[k] === i ? 'on' : ''}">${a[0]}</button>`).join('')}</div>`;
+  const sw = (k) => `<label class="sw"><input type="checkbox" data-k="${k}" ${S[k] ? 'checked' : ''}><span></span></label>`;
+  $('opts').innerHTML = `
+    <div class="opt"><div>Маникюр<small>аппаратный или комбинированный</small></div>${seg('svc', SVC)}</div>
+    <div class="opt"><div>Длина<small>влияет на расход материала</small></div>${seg('len', LEN)}</div>
+    <div class="opt"><div>Снятие старого покрытия<small>+300 ₽, 15 минут</small></div>${sw('remove')}</div>
+    <div class="opt"><div>Укрепление базой<small>+400 ₽ — для тонких ногтей</small></div>${sw('strong')}</div>
+    <div class="opt"><div>Дизайн: <b id="dn">${S.design}</b> ногт.<small>+150 ₽ за ноготь</small></div><input type="range" min="0" max="10" value="${S.design}" data-k="design" aria-label="Количество ногтей с дизайном"></div>
+    <div class="opt"><div>Педикюр с покрытием<small>+2 200 ₽, 80 минут</small></div>${sw('pedi')}</div>`;
+}
+function calc() {
+  const L = [[`Маникюр: ${SVC[S.svc][0].toLowerCase()}`, SVC[S.svc][1]]]; let m = SVC[S.svc][2];
+  if (S.svc && LEN[S.len][1]) L.push([`Длина: ${LEN[S.len][0].toLowerCase()}`, LEN[S.len][1]]);
+  if (S.remove) { L.push(['Снятие', 300]); m += 15; }
+  if (S.strong && S.svc) { L.push(['Укрепление', 400]); m += 10; }
+  if (S.design && S.svc) { L.push([`Дизайн × ${S.design}`, S.design * 150]); m += S.design * 5; }
+  if (S.pedi) { L.push(['Педикюр с покрытием', 2200]); m += 80; }
+  $('lines').innerHTML = L.map(([n, p]) => `<li><span>${n}</span><span>${rub(p)}</span></li>`).join('');
+  $('sum').textContent = rub(L.reduce((t, l) => t + l[1], 0));
+  $('dur').textContent = `≈ ${Math.floor(m / 60)} ч ${m % 60 ? (m % 60) + ' мин' : ''}`.trim();
+}
+$('opts').addEventListener('click', e => { const b = e.target.closest('.seg button'); if (!b) return; S[b.dataset.k] = +b.dataset.v; drawOpts(); calc(); });
+$('opts').addEventListener('change', e => { const i = e.target; if (i.type === 'checkbox') { S[i.dataset.k] = i.checked; calc(); } });
+$('opts').addEventListener('input', e => { const i = e.target; if (i.type === 'range') { S.design = +i.value; $('dn').textContent = i.value; calc(); } });
+const slots = []; for (let k = 1; k <= 4; k++) { const d = new Date(); d.setDate(d.getDate() + k); for (const t of ['10:00', '13:00', '16:00', '19:00']) if ((k * 7 + t.length + +t[1]) % 3) slots.push(`${d.toLocaleDateString('ru-RU', {weekday: 'short', day: 'numeric', month: 'short'})}, ${t}`); }
+$('slot').innerHTML = slots.map(s => `<option>${s}</option>`).join('');
+$('res').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, miss = [];
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (!f.name.value.trim()) { miss.push('имя'); f.name.classList.add('bad'); }
+  if (f.phone.value.replace(/\D/g, '').length < 10) { miss.push('телефон'); f.phone.classList.add('bad'); }
+  if (miss.length) { $('err').textContent = 'Укажите ' + miss.join(' и '); return; }
+  $('err').textContent = ''; $('ok').style.display = 'block';
+  $('ok').innerHTML = `<b>Вы записаны: ${f.slot.value}</b><br>${$('sum').textContent}, ${$('dur').textContent}. Накануне пришлём напоминание и схему проезда.`;
+});
+drawGal(); drawOpts(); calc();
+</script>
+</body>
+</html>

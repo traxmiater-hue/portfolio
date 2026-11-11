@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Бритва — барбершоп в Подольске. Стрижки, борода, бритьё. Онлайн-запись</title>
+<meta name="description" content="Барбершоп «Бритва» в Подольске: мужские стрижки, оформление бороды, королевское бритьё. Выберите мастера и время онлайн — без звонков.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111110;--bg2:#1a1917;--card:#201f1c;--line:#34312b;--text:#f1ece3;--muted:#a59d90;--gold:#c9a35a;--gold2:#e3c07f}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.os{font-family:Oswald,"Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.btn{display:inline-block;background:var(--gold);color:#111;border:0;padding:15px 26px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;font-size:14px;transition:.2s}
+.btn:hover{background:var(--gold2)}
+.btn.ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}.btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold)}
+header{position:fixed;inset:0 0 auto 0;z-index:30;transition:.3s}
+header.solid{background:rgba(17,17,16,.95);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:24px;height:72px}
+.logo{font-family:Oswald,sans-serif;font-size:28px;font-weight:700;letter-spacing:.12em;text-decoration:none;color:var(--text)}
+.logo span{color:var(--gold)}
+header nav{margin-left:auto;display:flex;gap:24px;font-size:14px;text-transform:uppercase;letter-spacing:.06em}
+header nav a{color:var(--muted);text-decoration:none}header nav a:hover{color:var(--gold)}
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,16,.95) 25%,rgba(17,17,16,.55) 65%,rgba(17,17,16,.35))}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:80px}
+.hero .pre{color:var(--gold);letter-spacing:.3em;font-size:13px;font-weight:700}
+.hero h1{font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(52px,8vw,112px);line-height:.95;text-transform:uppercase;margin:16px 0 20px;max-width:780px}
+.hero h1 span{color:transparent;-webkit-text-stroke:1.5px var(--gold)}
+.hero p{font-size:19px;color:#d8d0c3;max-width:520px;margin-bottom:30px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.hero .stats{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap}
+.hero .stats b{font-family:Oswald,sans-serif;font-size:38px;color:var(--gold);display:block;line-height:1}
+.hero .stats span{color:var(--muted);font-size:14px}
+section{padding:90px 0}
+h2{font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(36px,5vw,58px);text-transform:uppercase;line-height:1;margin-bottom:14px}
+.sub{color:var(--muted);font-size:18px;max-width:600px;margin-bottom:34px}
+/* услуги */
+.lvl{display:inline-flex;border:1px solid var(--line);margin-bottom:24px}
+.lvl button{font:inherit;font-size:14px;background:none;border:0;color:var(--muted);padding:10px 18px;cursor:pointer;text-transform:uppercase;letter-spacing:.05em}
+.lvl button.on{background:var(--gold);color:#111;font-weight:700}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:0 50px}
+.pr{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.pr h3{font-family:Oswald,sans-serif;font-weight:500;font-size:21px;text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:baseline;gap:10px}
+.pr h3::after{content:"";flex:1;border-bottom:1px dotted #4a463e;transform:translateY(-5px)}
+.pr b{font-family:Oswald,sans-serif;font-size:22px;color:var(--gold)}
+.pr p{grid-column:1/-1;color:var(--muted);font-size:14px}
+/* мастера */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.barber{background:var(--card);border:1px solid var(--line);overflow:hidden;position:relative}
+.barber img{aspect-ratio:4/4.4;object-fit:cover;width:100%;filter:grayscale(.35) contrast(1.05);transition:.4s}
+.barber:hover img{filter:none;transform:scale(1.03)}
+.barber div{padding:20px}
+.barber h3{font-family:Oswald,sans-serif;font-size:26px;text-transform:uppercase}
+.barber .role{color:var(--gold);font-size:13px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.barber p{color:var(--muted);font-size:14px;margin:8px 0 14px}
+.barber button{font:inherit;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:none;border:1px solid var(--gold);color:var(--gold);padding:9px 14px;cursor:pointer}
+.barber button:hover{background:var(--gold);color:#111}
+/* запись */
+.book{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
+.panel{background:var(--bg2);border:1px solid var(--line);padding:30px}
+.stepT{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:.12em;color:var(--gold);margin:22px 0 10px}
+.stepT:first-child{margin-top:0}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{font:inherit;font-size:14px;background:var(--card);border:1px solid var(--line);color:var(--text);padding:10px 14px;cursor:pointer;text-align:left}
+.opts button small{display:block;color:var(--muted);font-size:12px}
+.opts button.on{border-color:var(--gold);background:#2a2418}
+.opts button:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.sum{position:sticky;top:92px;align-self:start}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;margin:16px 0 20px;font-size:15px}
+.sum dt{color:var(--muted)}.sum dd{text-align:right}
+.sum .tot{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-family:Oswald,sans-serif;font-size:28px;color:var(--gold)}
+.sum input{font:inherit;width:100%;background:var(--card);border:1px solid var(--line);color:var(--text);padding:12px 14px;margin-top:10px;outline:none}
+.sum input:focus{border-color:var(--gold)}
+.bad{border-color:#d9534f!important}
+.err{color:#e07a73;font-size:14px;margin:10px 0}
+.done{border:1px solid var(--gold);padding:18px;margin-top:14px;display:none}
+/* галерея */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:10px}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal .t{grid-row:span 2}
+.gift{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;border:1px solid var(--gold);padding:40px;background:linear-gradient(120deg,#1d1a14,#111110)}
+.gift h2{font-size:clamp(30px,4vw,44px)}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+footer b{color:var(--text);display:block;margin-bottom:6px;font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:960px){.price,.book,.gift{grid-template-columns:1fr}.team{grid-template-columns:1fr 1fr}header nav{display:none}.gal{grid-template-columns:1fr 1fr}.sum{position:static}footer .wrap{grid-template-columns:1fr}}
+@media (max-width:560px){.team{grid-template-columns:1fr}.panel{padding:22px 18px}.gift{padding:26px 20px}.hero .stats{gap:24px}.gal{grid-auto-rows:160px}}
+</style>
+</head>
+<body>
+<header id="hdr"><div class="wrap">
+  <a class="logo" href="#">БРИТ<span>ВА</span></a>
+  <nav><a href="#services">Услуги</a><a href="#team">Мастера</a><a href="#book">Запись</a><a href="#works">Работы</a></nav>
+  <a class="btn" href="#book" style="padding:11px 18px">Записаться</a>
+</div></header>
+
+<section class="hero" style="padding:0">
+  <img src="img/hero.jpg" alt="Зал барбершопа: кресла, зеркала, кирпичная стена" width="1600" height="1063">
+  <div class="wrap">
+    <div class="pre">БАРБЕРШОП · ПОДОЛЬСК · С 2017</div>
+    <h1>Стрижка <span>как надо</span>, а не как получилось</h1>
+    <p>Классика, фейды, борода и бритьё опасной бритвой. Запись онлайн за 30 секунд — выбираете мастера и время, мы держим кресло.</p>
+    <div class="row"><a class="btn" href="#book">Выбрать время</a><a class="btn ghost" href="#services">Цены</a></div>
+    <div class="stats"><div><b>5,0</b><span>402 отзыва на картах</span></div><div><b>45 мин</b><span>стрижка без спешки</span></div><div><b>7 дней</b><span>бесплатная коррекция</span></div></div>
+  </div>
+</section>
+
+<section id="services"><div class="wrap">
+  <h2>Услуги и цены</h2>
+  <p class="sub">Цена зависит от уровня мастера. Переключите — увидите разницу.</p>
+  <div class="lvl" id="lvl"><button class="on" data-l="0">Барбер</button><button data-l="1">Топ-барбер</button></div>
+  <div class="price" id="price"></div>
+</div></section>
+
+<section id="team" style="padding-top:0"><div class="wrap">
+  <h2>Мастера</h2>
+  <p class="sub">У каждого свой почерк. Фото — их работы.</p>
+  <div class="team" id="teamGrid"></div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap">
+  <h2>Онлайн-запись</h2>
+  <p class="sub">Три шага. Занятое время зачёркнуто.</p>
+  <div class="book">
+    <div class="panel">
+      <div class="stepT">1 · Мастер</div><div class="opts" id="oBarber"></div>
+      <div class="stepT">2 · Услуга</div><div class="opts" id="oSvc"></div>
+      <div class="stepT">3 · День</div><div class="opts" id="oDay"></div>
+      <div class="stepT">Время</div><div class="opts" id="oTime"></div>
+    </div>
+    <form class="panel sum" id="bookForm" novalidate>
+      <div class="os" style="font-size:22px">Ваша запись</div>
+      <dl><dt>Мастер</dt><dd id="sB">—</dd><dt>Услуга</dt><dd id="sS">—</dd><dt>Когда</dt><dd id="sW">—</dd><dt>Длится</dt><dd id="sD">—</dd></dl>
+      <div class="tot"><span>Итого</span><span id="sP">0 ₽</span></div>
+      <input name="name" placeholder="Имя" autocomplete="given-name">
+      <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel">
+      <p class="err" id="bErr"></p>
+      <button class="btn" style="width:100%;margin-top:6px">Записаться</button>
+      <div class="done" id="bOk"></div>
+    </form>
+  </div>
+</div></section>
+
+<section id="works" style="padding-top:0"><div class="wrap">
+  <h2>Работы</h2>
+  <p class="sub">Больше — в нашем Telegram-канале.</p>
+  <div class="gal">
+    <img class="t" src="img/beard.jpg" alt="Оформление бороды ножницами" loading="lazy">
+    <img src="img/tools.jpg" alt="Машинки, ножницы и средства для укладки" loading="lazy">
+    <img src="img/cut.jpg" alt="Клиент в кресле барбера" loading="lazy">
+    <img class="t" src="img/fade.jpg" alt="Стрижка фейд" loading="lazy">
+    <img src="img/interior.jpg" alt="Зал вечером" loading="lazy">
+    <img src="img/scissors.jpg" alt="Инструменты барбера" loading="lazy">
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="gift">
+    <div><h2>Подарочный сертификат</h2><p class="sub" style="margin:0">На стрижку, бритьё или комплекс «Отец и сын». Электронный — придёт в WhatsApp за минуту.</p></div>
+    <a class="btn" href="tel:+74950000000">Купить сертификат</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b>Бритва</b>Подольск, ул. Кирова, 18. Демонстрационный сайт: название, мастера и отзывы вымышлены. Фото: Unsplash.</div>
+  <div><b>Часы</b>Ежедневно 10:00–21:00</div>
+  <div><b>Связь</b><a href="tel:+74950000000" style="color:var(--gold)">+7 495 000-00-00</a></div>
+</div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+// услуга: название, описание, минуты, цена барбер, цена топ
+const SVC = [
+  ['Мужская стрижка', 'Консультация, мытьё, стрижка, укладка', 45, 1400, 1900],
+  ['Стрижка + борода', 'Комплекс со скидкой 15%', 75, 2300, 3100],
+  ['Оформление бороды', 'Форма, контур, горячее полотенце', 30, 900, 1300],
+  ['Королевское бритьё', 'Опасная бритва, распаривание, уход', 40, 1200, 1600],
+  ['Детская стрижка', 'До 12 лет', 40, 1000, 1300],
+  ['Отец и сын', 'Две стрижки в соседних креслах', 60, 2200, 2900],
+  ['Камуфляж седины', 'Тонирование головы или бороды', 30, 1100, 1400],
+  ['Стрижка машинкой', 'Одна насадка, 20 минут', 20, 700, 900],
+];
+const TEAM = [
+  ['Артур', 1, 'Топ-барбер · 9 лет', 'Классика и бритьё опасной бритвой. Обучает новичков.', 'razor'],
+  ['Глеб', 0, 'Барбер · 4 года', 'Фейды и текстурные стрижки, аккуратные контуры.', 'fade'],
+  ['Тимур', 1, 'Топ-барбер · 7 лет', 'Бороды любой длины и сложные формы.', 'beard'],
+];
+let lvl = 0, bi = null, si = 0, di = 0, ti = null;
+function drawPrice() { $('price').innerHTML = SVC.map(s => `<div class="pr"><h3>${s[0]}</h3><b>${rub(s[3 + lvl])}</b><p>${s[1]} · ${s[2]} мин</p></div>`).join(''); }
+$('lvl').onclick = e => { const b = e.target.closest('button'); if (!b) return; lvl = +b.dataset.l; [...$('lvl').children].forEach(x => x.classList.toggle('on', x === b)); drawPrice(); };
+$('teamGrid').innerHTML = TEAM.map((t, i) => `<article class="barber"><img src="img/${t[4]}.jpg" alt="Работа мастера ${t[0]}" loading="lazy"><div><span class="role">${t[2]}</span><h3>${t[0]}</h3><p>${t[3]}</p><button data-i="${i}">Записаться к ${t[0] === 'Тимур' ? 'Тимуру' : t[0] === 'Глеб' ? 'Глебу' : 'Артуру'}</button></div></article>`).join('');
+$('teamGrid').onclick = e => { const b = e.target.closest('button'); if (!b) return; bi = +b.dataset.i; ti = null; drawBook(); $('book').scrollIntoView(); };
+const DAYS = Array.from({length: 7}, (_, k) => { const d = new Date(); d.setDate(d.getDate() + k); return d; });
+const SLOTS = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+function busy(b, d, s) { return ((b + 3) * (d + 5) * (s + 7)) % 5 === 0; }  // демо: часть слотов занята
+function passed(d, s) { if (d) return false; const n = new Date(); return +SLOTS[s].split(':')[0] <= n.getHours(); }
+function drawBook() {
+  $('oBarber').innerHTML = TEAM.map((t, i) => `<button type="button" class="${i === bi ? 'on' : ''}" data-i="${i}">${t[0]}<small>${t[1] ? 'топ-барбер' : 'барбер'}</small></button>`).join('')
+    + `<button type="button" class="${bi === -1 ? 'on' : ''}" data-i="-1">Любой<small>ближайший свободный</small></button>`;
+  const L = bi === null || bi === -1 ? 0 : TEAM[bi][1];
+  $('oSvc').innerHTML = SVC.map((s, i) => `<button type="button" class="${i === si ? 'on' : ''}" data-i="${i}">${s[0]}<small>${s[2]} мин · ${rub(s[3 + L])}</small></button>`).join('');
+  $('oDay').innerHTML = DAYS.map((d, i) => `<button type="button" class="${i === di ? 'on' : ''}" data-i="${i}">${i === 0 ? 'Сегодня' : i === 1 ? 'Завтра' : d.toLocaleDateString('ru-RU', {weekday: 'short'})}<small>${d.toLocaleDateString('ru-RU', {day: 'numeric', month: 'short'})}</small></button>`).join('');
+  const b = bi === null ? 0 : Math.max(0, bi);
+  $('oTime').innerHTML = SLOTS.map((s, i) => `<button type="button" class="${i === ti ? 'on' : ''}" data-i="${i}" ${busy(b, di, i) || passed(di, i) ? 'disabled' : ''}>${s}</button>`).join('');
+  $('sB').textContent = bi === null ? '—' : bi === -1 ? 'Любой' : TEAM[bi][0];
+  $('sS').textContent = SVC[si][0]; $('sD').textContent = SVC[si][2] + ' мин';
+  $('sW').textContent = ti === null ? '—' : `${DAYS[di].toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'})}, ${SLOTS[ti]}`;
+  $('sP').textContent = rub(SVC[si][3 + L]);
+}
+if (SLOTS.every((_, i) => passed(0, i) || busy(0, 0, i))) di = 1;
+const pick = (id, fn) => $(id).onclick = e => { const b = e.target.closest('button'); if (!b || b.disabled) return; fn(+b.dataset.i); drawBook(); };
+pick('oBarber', i => { bi = i; ti = null; }); pick('oSvc', i => si = i); pick('oDay', i => { di = i; ti = null; }); pick('oTime', i => ti = i);
+$('bookForm').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, miss = [];
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (bi === null) miss.push('мастера'); if (ti === null) miss.push('время');
+  if (!f.name.value.trim()) { miss.push('имя'); f.name.classList.add('bad'); }
+  if (f.phone.value.replace(/\D/g, '').length < 10) { miss.push('телефон'); f.phone.classList.add('bad'); }
+  if (miss.length) { $('bErr').textContent = 'Укажите: ' + miss.join(', '); return; }
+  $('bErr').textContent = '';
+  $('bOk').style.display = 'block';
+  $('bOk').innerHTML = `<b class="os" style="color:var(--gold)">Вы записаны</b><br>${$('sW').textContent}, мастер — ${$('sB').textContent}. За 2 часа напомним в WhatsApp. Если планы изменятся — отменить можно ответом на сообщение.`;
+});
+addEventListener('scroll', () => $('hdr').classList.toggle('solid', scrollY > 40));
+drawPrice(); drawBook();
+</script>
+</body>
+</html>

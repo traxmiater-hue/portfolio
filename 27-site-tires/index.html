@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Протектор — шиномонтаж в Мытищах. Переобувка без очереди, хранение шин</title>
+<meta name="description" content="Шиномонтаж «Протектор» в Мытищах: сезонная переобувка от 25 минут, балансировка, ремонт проколов, хранение шин. Живая очередь и цены по радиусу онлайн.">
+<style>
+:root{--bg:#f4f4f2;--paper:#fff;--ink:#141414;--yel:#ffcc00;--yel2:#f2b800;--gray:#6b6b68;--line:#e2e2de;--dark:#1b1b1b}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-block;background:var(--yel);color:var(--ink);border:0;border-radius:6px;padding:15px 24px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;text-transform:uppercase;letter-spacing:.03em;font-size:15px;transition:.15s}
+.btn:hover{background:var(--yel2)}
+.btn.dk{background:var(--ink);color:#fff}.btn.dk:hover{background:#333}
+.stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--yel) 0 18px,var(--ink) 18px 36px)}
+header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:30}
+header .wrap{display:flex;align-items:center;gap:22px;height:66px}
+.logo{font-weight:900;font-size:24px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;color:#fff}
+.logo span{color:var(--yel)}
+header nav{margin-left:auto;display:flex;gap:22px;font-size:15px}header nav a{color:#cfcfcf;text-decoration:none}header nav a:hover{color:var(--yel)}
+.hero{background:var(--dark);color:#fff;position:relative;overflow:hidden}
+.hero img{position:absolute;right:0;top:0;width:58%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 42%,rgba(27,27,27,.4) 70%,rgba(27,27,27,.1))}
+.hero .wrap{position:relative;z-index:1;padding:80px 22px 90px}
+.hero h1{font-size:clamp(44px,6vw,84px);font-weight:900;line-height:.98;text-transform:uppercase;letter-spacing:-.01em;max-width:700px}
+.hero h1 span{color:var(--yel)}
+.hero p{font-size:19px;color:#cfcfcf;max-width:500px;margin:20px 0 28px}
+.queue{display:grid;width:max-content;max-width:100%;grid-template-columns:auto auto auto;gap:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:16px 22px;margin-top:34px}
+.queue b{display:block;font-size:32px;color:var(--yel);line-height:1}
+.queue span{font-size:13px;color:#bdbdbd}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#3ddc6a;margin-right:6px}
+section{padding:80px 0}
+h2{font-size:clamp(32px,4.4vw,52px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:12px}
+.sub{color:var(--gray);font-size:18px;max-width:640px;margin-bottom:30px}
+/* цены */
+.pc{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-weight:700;font-size:14px;border:0;background:var(--paper);padding:10px 16px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--yel)}
+.rad{display:flex;gap:6px;flex-wrap:wrap}
+.rad button{font:inherit;font-weight:800;font-size:15px;border:2px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 12px;cursor:pointer;min-width:58px}
+.rad button.on{border-color:var(--ink);background:var(--yel)}
+table{width:100%;border-collapse:collapse;background:var(--paper);border-radius:10px;overflow:hidden}
+th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--ink);color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td:last-child{text-align:right;font-weight:800;font-size:17px;white-space:nowrap}
+tr.total td{background:#fff8d6;font-size:19px}
+.note{color:var(--gray);font-size:14px;margin-top:10px}
+/* запись */
+.book{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:28px}
+.lbl{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin:20px 0 10px}
+.lbl:first-child{margin-top:0}
+.days,.slots{display:flex;gap:8px;flex-wrap:wrap}
+.days button,.slots button{font:inherit;font-size:14px;border:2px solid var(--line);background:var(--paper);border-radius:6px;padding:9px 12px;cursor:pointer;text-align:center}
+.days button small{display:block;color:var(--gray);font-size:12px}
+.days button.on,.slots button.on{border-color:var(--ink);background:var(--yel)}
+.slots button:disabled{opacity:.35;cursor:not-allowed;background:repeating-linear-gradient(-45deg,#f2f2f0 0 6px,#fff 6px 12px)}
+.side{background:var(--ink);color:#fff;border-radius:10px;padding:28px;display:grid;gap:12px;align-content:start}
+.side input{font:inherit;border:0;border-radius:6px;padding:13px 14px;outline:none}
+.side .sum{font-size:15px;color:#cfcfcf}.side .sum b{display:block;color:var(--yel);font-size:24px}
+.bad{outline:3px solid #ff6b6b}
+.err{color:#ff9c9c;font-size:14px}
+.ok{display:none;background:var(--yel);color:var(--ink);border-radius:6px;padding:14px;font-weight:600}
+/* хранение */
+.store{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.store img{border-radius:10px;width:100%;max-height:440px;object-fit:cover}
+.store .calcbox{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px;margin-top:18px}
+.store input[type=range]{width:100%;accent-color:var(--ink)}
+.store .res{font-size:38px;font-weight:900;margin-top:10px}
+.store label{display:flex;justify-content:space-between;font-weight:700;margin:12px 0 6px}
+/* услуги */
+.svcs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.svc img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.svc div{padding:18px}
+.svc h3{font-size:18px;text-transform:uppercase;font-weight:900}
+.svc p{color:var(--gray);font-size:14px;margin:6px 0 10px}
+.svc b{font-size:17px}
+footer{background:var(--ink);color:#bdbdbd;padding:36px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:960px){.book,.store{grid-template-columns:1fr}.svcs{grid-template-columns:1fr 1fr}header nav{display:none}.hero img{width:100%;opacity:.45}.hero::after{background:linear-gradient(180deg,rgba(27,27,27,.55),var(--dark))}}
+@media (max-width:560px){.svcs{grid-template-columns:1fr}.queue{grid-template-columns:repeat(3,auto);gap:14px;padding:12px 14px}.queue b{font-size:24px}th,td{padding:12px}.panel,.side{padding:20px}.hero .wrap{padding:56px 22px 64px}header .btn{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Протек<span>тор</span></a>
+  <nav><a href="#prices">Цены</a><a href="#book">Запись</a><a href="#storage">Хранение</a><a href="#services">Услуги</a></nav>
+  <a class="btn" href="#book" style="padding:10px 16px;font-size:13px">Записаться</a>
+</div></header>
+<div class="stripe"></div>
+
+<section class="hero" style="padding:0">
+  <img src="img/hero.jpg" alt="Мастер снимает колесо с автомобиля" width="1600" height="1067">
+  <div class="wrap">
+    <h1>Переобувка <span>за 25 минут</span> — без очереди</h1>
+    <p>Запишитесь на точное время — и не стойте в сезонной очереди. Шесть постов, балансировка на новом стенде, хранение шин до весны.</p>
+    <a class="btn" href="#book">Выбрать время</a> <a class="btn dk" href="#prices" style="background:#2c2c2c">Цены по радиусу</a>
+    <div class="queue"><div><b id="qCars">3</b><span><i class="dot"></i>авто в очереди</span></div><div><b id="qWait">~20 мин</b><span>ожидание сейчас</span></div><div><b>5,0 ★</b><span>481 отзыв</span></div></div>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<section id="prices"><div class="wrap">
+  <h2>Цены на шиномонтаж</h2>
+  <p class="sub">Выберите тип машины и радиус — посчитаем комплекс на 4 колеса.</p>
+  <div class="pc"><div class="seg" id="car"></div><div class="rad" id="rad"></div></div>
+  <table><thead><tr><th>Услуга</th><th>За 1 колесо</th><th>За 4 колеса</th></tr></thead><tbody id="tbody"></tbody></table>
+  <p class="note">Низкий профиль и RunFlat — +20%. Утилизация старых шин — 150 ₽ за штуку.</p>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap">
+  <h2>Запись на время</h2>
+  <p class="sub">Занятые слоты заштрихованы. Приезжайте к своему времени — пост будет свободен.</p>
+  <div class="book">
+    <div class="panel">
+      <div class="lbl">День</div><div class="days" id="days"></div>
+      <div class="lbl">Время</div><div class="slots" id="slots"></div>
+    </div>
+    <form class="side" id="bForm" novalidate>
+      <div class="sum">Вы выбрали<b id="bWhen">—</b><span id="bWhat"></span></div>
+      <input name="car" placeholder="Марка и модель, напр. Kia Rio">
+      <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel">
+      <p class="err" id="bErr"></p>
+      <button class="btn">Записаться</button>
+      <div class="ok" id="bOk"></div>
+    </form>
+  </div>
+</div></section>
+
+<section id="storage" style="padding-top:0"><div class="wrap">
+  <div class="store">
+    <img src="img/stack.jpg" alt="Комплекты шин на хранении" loading="lazy">
+    <div>
+      <h2>Хранение шин</h2>
+      <p class="sub" style="margin-bottom:0">Сухой отапливаемый склад, каждое колесо — в пакете с биркой. При переобувке хранение со скидкой 20%.</p>
+      <div class="calcbox">
+        <label>Срок хранения <span id="mN">6 мес</span></label><input type="range" id="months" min="1" max="12" value="6">
+        <label style="margin-top:16px">Комплект</label>
+        <div class="seg" id="kit"><button type="button" class="on">Шины</button><button type="button">Колёса с дисками</button></div>
+        <div class="res" id="sRes">—</div><div class="note" id="sNote"></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="services" style="padding-top:0"><div class="wrap">
+  <h2>Ещё делаем</h2>
+  <p class="sub">Всё, что нужно колесу, — на одном посту.</p>
+  <div class="svcs">
+    <div class="svc"><img src="img/wrench.jpg" alt="Затяжка болтов гайковёртом" loading="lazy"><div><h3>Ремонт прокола</h3><p>Жгут или грибок, 15 минут</p><b>от 400 ₽</b></div></div>
+    <div class="svc"><img src="img/tool.jpg" alt="Шиномонтажный станок" loading="lazy"><div><h3>Правка дисков</h3><p>Стальные и литые, на станке</p><b>от 900 ₽</b></div></div>
+    <div class="svc"><img src="img/wheel.jpg" alt="Колесо с внедорожной резиной" loading="lazy"><div><h3>Продажа шин</h3><p>Подберём по размеру и бюджету</p><b>под заказ за 1 день</b></div></div>
+    <div class="svc"><img src="img/garage.jpg" alt="Бокс шиномонтажа" loading="lazy"><div><h3>Азот в шины</h3><p>Давление держится дольше</p><b>200 ₽</b></div></div>
+  </div>
+</div></section>
+
+<div class="stripe"></div>
+<footer><div class="wrap"><span>Мытищи, Ярославское шоссе, 54 · круглосуточно в сезон, обычно 8:00–22:00 · <a href="tel:+74950000000" style="color:var(--yel)">+7 495 000-00-00</a></span><span>Демонстрационный сайт: название, цены и отзывы вымышлены. Фото: Unsplash</span></div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+const CARS = [['Легковой', 1], ['Кроссовер', 1.25], ['Внедорожник', 1.5]];
+const RADS = [13, 14, 15, 16, 17, 18, 19, 20, 21];
+// цена за колесо для легкового R13, растёт на 7% за каждый дюйм
+const OPS = [['Снятие и установка', 150], ['Монтаж и демонтаж шины', 170], ['Балансировка', 160], ['Мойка колеса', 60]];
+let car = 0, rad = 16;
+function k() { return CARS[car][1] * Math.pow(1.07, rad - 13); }
+const r10 = n => Math.round(n / 10) * 10;
+function drawPrices() {
+  $('car').innerHTML = CARS.map((c, i) => `<button type="button" class="${i === car ? 'on' : ''}">${c[0]}</button>`).join('');
+  $('rad').innerHTML = RADS.map(r => `<button type="button" class="${r === rad ? 'on' : ''}">R${r}</button>`).join('');
+  const rows = OPS.map(([n, p]) => [n, r10(p * k())]);
+  const one = rows.reduce((t, r) => t + r[1], 0);
+  $('tbody').innerHTML = rows.map(([n, p]) => `<tr><td>${n}</td><td>${rub(p)}</td><td>${rub(p * 4)}</td></tr>`).join('')
+    + `<tr class="total"><td><b>Комплекс «Переобувка»</b></td><td>${rub(one)}</td><td>${rub(one * 4)}</td></tr>`;
+  $('bWhat').textContent = `${CARS[car][0]}, R${rad} · комплекс ${rub(one * 4)}`;
+}
+$('car').onclick = e => { const b = e.target.closest('button'); if (!b) return; car = [...$('car').children].indexOf(b); drawPrices(); };
+$('rad').onclick = e => { const b = e.target.closest('button'); if (!b) return; rad = +b.textContent.slice(1); drawPrices(); };
+
+// запись
+const DAYS = Array.from({length: 6}, (_, i) => { const d = new Date(); d.setDate(d.getDate() + i); return d; });
+const SLOTS = []; for (let h = 8; h < 22; h++) SLOTS.push(`${h}:00`, `${h}:30`);
+let di = 0, si = null;
+const busy = (d, s) => ((d * 13 + s * 7) % 9) < 4;  // демо: в сезон занято почти половина
+{ const n = new Date(), h = n.getHours() + n.getMinutes() / 60; if (SLOTS.every((s, i) => busy(0, i) || +s.split(':')[0] + s.split(':')[1] / 60 <= h + .25)) di = 1; }
+function drawBook() {
+  $('days').innerHTML = DAYS.map((d, i) => `<button type="button" class="${i === di ? 'on' : ''}">${i === 0 ? 'Сегодня' : i === 1 ? 'Завтра' : d.toLocaleDateString('ru-RU', {weekday: 'short'})}<small>${d.toLocaleDateString('ru-RU', {day: 'numeric', month: 'short'})}</small></button>`).join('');
+  const now = new Date(), h = now.getHours() + now.getMinutes() / 60;
+  $('slots').innerHTML = SLOTS.map((s, i) => { const [hh, mm] = s.split(':'), past = di === 0 && +hh + mm / 60 <= h + .25;
+    return `<button type="button" class="${i === si ? 'on' : ''}" ${busy(di, i) || past ? 'disabled' : ''}>${s}</button>`; }).join('');
+  $('bWhen').textContent = si === null ? 'выберите время' : `${DAYS[di].toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'})}, ${SLOTS[si]}`;
+}
+$('days').onclick = e => { const b = e.target.closest('button'); if (!b) return; di = [...$('days').children].indexOf(b); si = null; drawBook(); };
+$('slots').onclick = e => { const b = e.target.closest('button'); if (!b || b.disabled) return; si = [...$('slots').children].indexOf(b); drawBook(); };
+$('bForm').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, miss = [];
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (si === null) miss.push('время');
+  if (!f.car.value.trim()) { miss.push('машину'); f.car.classList.add('bad'); }
+  if (f.phone.value.replace(/\D/g, '').length < 10) { miss.push('телефон'); f.phone.classList.add('bad'); }
+  if (miss.length) { $('bErr').textContent = 'Укажите ' + miss.join(', '); return; }
+  $('bErr').textContent = ''; $('bOk').style.display = 'block';
+  $('bOk').textContent = `Записали: ${$('bWhen').textContent}, ${f.car.value}. Пост № ${1 + si % 6}. За час пришлём SMS-напоминание.`;
+});
+
+// хранение: шины 400 ₽/мес за комплект, колёса 500 ₽/мес, при переобувке −20%
+let kit = 0;
+function drawStore() {
+  const m = +$('months').value, p = (kit ? 500 : 400) * m;
+  $('mN').textContent = `${m} мес`; $('sRes').textContent = rub(r10(p * .8));
+  $('sNote').textContent = `без переобувки у нас — ${rub(p)}. Мойка и проверка шин перед хранением бесплатно.`;
+}
+$('months').oninput = drawStore;
+$('kit').onclick = e => { const b = e.target.closest('button'); if (!b) return; kit = [...$('kit').children].indexOf(b); [...$('kit').children].forEach(x => x.classList.toggle('on', x === b)); drawStore(); };
+
+// живая очередь (демо): больше машин утром и вечером
+const H = new Date().getHours(), cars = H < 8 || H >= 22 ? 0 : [2, 4, 3, 1, 1, 2, 2, 3, 5, 6, 4, 2, 1, 1][Math.max(0, H - 8)] || 1;
+$('qCars').textContent = cars; $('qWait').textContent = cars ? `~${cars * 25 / 6 * 2 | 0 || 5} мин` : '0 мин';
+drawPrices(); drawBook(); drawStore();
+</script>
+</body>
+</html>

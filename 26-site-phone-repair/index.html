@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Перезагрузка — ремонт телефонов в Люберцах. Цена онлайн, ремонт от 20 минут</title>
+<meta name="description" content="Сервис «Перезагрузка» в Люберцах: замена экрана, батареи, разъёма. Узнайте цену ремонта онлайн, проверьте статус по номеру заказа, курьер бесплатно.">
+<style>
+:root{--bg:#0c1220;--bg2:#121a2c;--card:#162038;--line:#24314f;--text:#e8eefc;--muted:#8d9bbb;--lime:#c6f432;--lime2:#a8d71a;--blue:#4f8cff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#0c1220;border:0;border-radius:12px;padding:14px 22px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--lime2)}
+.btn.out{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}.btn.out:hover{box-shadow:inset 0 0 0 1px var(--lime);color:var(--lime)}
+header{position:sticky;top:0;z-index:30;background:rgba(12,18,32,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:22px;height:66px}
+.logo{font-weight:900;font-size:22px;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px}
+.logo i{width:26px;height:26px;border-radius:8px;border:2.5px solid var(--lime);position:relative}
+.logo i::after{content:"";position:absolute;left:50%;top:-5px;width:2.5px;height:11px;background:var(--lime);transform:translateX(-50%);box-shadow:0 0 0 3px var(--bg)}
+header nav{margin-left:auto;display:flex;gap:22px;font-size:15px}header nav a{color:var(--muted);text-decoration:none}header nav a:hover{color:var(--lime)}
+.hero{padding:56px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-200px;top:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(79,140,255,.25),transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative}
+.chip{display:inline-flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;color:var(--muted)}
+.chip b{color:var(--lime)}
+.hero h1{font-size:clamp(40px,5.4vw,70px);line-height:1.02;letter-spacing:-.03em;margin:18px 0;font-weight:900}
+.hero h1 span{color:var(--lime)}
+.hero p{font-size:19px;color:var(--muted);max-width:540px;margin-bottom:28px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:grid;grid-template-columns:repeat(3,auto);gap:30px;margin-top:34px;justify-content:start}
+.trust b{display:block;font-size:28px}.trust span{color:var(--muted);font-size:14px}
+.ph{position:relative}
+.ph img{border-radius:28px;aspect-ratio:4/5;object-fit:cover;width:100%;max-height:600px}
+.ph .card{position:absolute;left:-30px;bottom:40px;background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:16px 18px;width:250px;box-shadow:0 30px 60px -30px #000}
+.ph .card small{color:var(--muted)}
+.prog{height:6px;background:var(--line);border-radius:6px;margin-top:10px;overflow:hidden}.prog i{display:block;height:100%;width:72%;background:var(--lime)}
+section{padding:80px 0}
+h2{font-size:clamp(32px,4vw,48px);letter-spacing:-.02em;line-height:1.1;margin-bottom:10px;font-weight:900}
+.sub{color:var(--muted);font-size:18px;max-width:640px;margin-bottom:30px}
+/* калькулятор */
+.calc{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:28px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px}
+.lbl:first-child{margin-top:0}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{font:inherit;font-size:15px;background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 14px;cursor:pointer}
+.opts button.on{border-color:var(--lime);background:#1f2b13;color:var(--lime)}
+.opts button small{display:block;color:var(--muted);font-size:12px}
+select{font:inherit;background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:11px 13px;width:100%;max-width:340px}
+.quote{background:linear-gradient(160deg,#18233f,#0f1729);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;gap:14px;align-content:start;position:sticky;top:86px}
+.quote .price{font-size:54px;font-weight:900;color:var(--lime);line-height:1}
+.quote dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:15px}
+.quote dt{color:var(--muted)}.quote dd{text-align:right}
+.quote .note{font-size:13px;color:var(--muted)}
+/* статус */
+.status{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:start}
+.status form{display:flex;gap:10px;flex-wrap:wrap}
+.status input{font:inherit;background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:13px 15px;flex:1;min-width:180px;outline:none}
+.status input:focus{border-color:var(--lime)}
+.tl{list-style:none;padding:0;position:relative}
+.tl li{position:relative;padding:0 0 22px 34px}
+.tl li::before{content:"";position:absolute;left:8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--line)}
+.tl li::after{content:"";position:absolute;left:14px;top:22px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl li.done::before{background:var(--lime)}
+.tl li.cur::before{background:var(--blue);box-shadow:0 0 0 5px rgba(79,140,255,.25)}
+.tl small{display:block;color:var(--muted)}
+.hint{color:var(--muted);font-size:14px;margin-top:10px}
+/* почему мы */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why div{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:22px}
+.why b{font-size:18px;display:block;margin:10px 0 6px}.why p{color:var(--muted);font-size:14px}
+.why span{font-size:28px}
+.photos{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-top:18px}
+.photos img{border-radius:18px;height:240px;width:100%;object-fit:cover}
+/* курьер */
+.courier{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--lime);color:#0c1220;border-radius:30px;padding:40px}
+.courier h2{color:#0c1220}.courier p{color:#2d3a12}
+.courier form{display:grid;gap:10px}
+.courier input{font:inherit;border:0;border-radius:12px;padding:13px 15px;outline:none}
+.courier .btn{background:#0c1220;color:var(--lime)}
+.bad{outline:2px solid #ff6b6b}
+.err{font-size:14px;color:#8a1c1c}
+.okc{display:none;background:#0c1220;color:var(--lime);border-radius:14px;padding:14px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:960px){.hero .wrap,.calc,.status,.courier{grid-template-columns:1fr}.why{grid-template-columns:1fr 1fr}header nav{display:none}.quote{position:static}.ph .card{left:12px}.photos{grid-template-columns:1fr 1fr}.photos img:first-child{grid-column:1/-1}}
+@media (max-width:560px){header .btn{display:none}.why{grid-template-columns:1fr}.trust{grid-template-columns:repeat(3,1fr);gap:14px}.trust b{font-size:22px}.courier,.panel{padding:22px 18px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><i></i>Перезагрузка</a>
+  <nav><a href="#calc">Цены</a><a href="#status">Статус ремонта</a><a href="#courier">Курьер</a></nav>
+  <a class="btn" href="tel:+74950000000" style="padding:10px 16px">+7 495 000-00-00</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="chip">Сейчас в работе: <b id="inWork">7 устройств</b> · свободных мастеров: <b>2</b></span>
+    <h1>Разбили экран? <span>Через 30 минут</span> будет как новый</h1>
+    <p>Ремонт iPhone, Samsung, Xiaomi и других. Цена — сразу на сайте, без «посмотрим». Диагностика бесплатно, гарантия до 12 месяцев.</p>
+    <div class="row"><a class="btn" href="#calc">Узнать цену ремонта</a><a class="btn out" href="#status">Проверить статус</a></div>
+    <div class="trust"><div><b>5,0 ★</b><span>508 отзывов</span></div><div><b>20 мин</b><span>замена батареи</span></div><div><b>12 мес</b><span>гарантия</span></div></div>
+  </div>
+  <div class="ph">
+    <img src="img/hero.jpg" alt="Мастер ремонтирует смартфон" width="1600" height="2844">
+    <div class="card"><small>Заказ № 4821 · iPhone 13</small><br><b>Замена экрана — проверка</b><div class="prog"><i></i></div></div>
+  </div>
+</div></section>
+
+<section id="calc" style="padding-top:0"><div class="wrap">
+  <h2>Цена ремонта онлайн</h2>
+  <p class="sub">Выберите устройство и поломку. Итоговая цена — с работой и запчастью, без доплат.</p>
+  <div class="calc">
+    <div class="panel">
+      <div class="lbl">Бренд</div><div class="opts" id="oBrand"></div>
+      <div class="lbl">Модель</div><select id="oModel" aria-label="Модель"></select>
+      <div class="lbl">Что случилось</div><div class="opts" id="oFault"></div>
+      <div class="lbl">Запчасть</div><div class="opts" id="oPart"></div>
+    </div>
+    <div class="quote">
+      <span style="color:var(--muted)">Стоимость</span>
+      <div class="price" id="qPrice">—</div>
+      <dl><dt>Устройство</dt><dd id="qDev">—</dd><dt>Срок</dt><dd id="qTime">—</dd><dt>Гарантия</dt><dd id="qWar">—</dd></dl>
+      <a class="btn" href="#courier" style="justify-content:center">Оформить ремонт</a>
+      <span class="note">Если при диагностике найдём другую причину — сначала позвоним и согласуем цену.</span>
+    </div>
+  </div>
+</div></section>
+
+<section id="status" style="padding-top:0"><div class="wrap">
+  <div class="status">
+    <div>
+      <h2>Где мой телефон?</h2>
+      <p class="sub">Введите номер заказа из квитанции — покажем, на каком этапе ремонт.</p>
+      <form id="stForm"><input id="stNo" placeholder="Например, 4821" inputmode="numeric" aria-label="Номер заказа"><button class="btn">Проверить</button></form>
+      <p class="hint">Демо: попробуйте 4821, 4790 или 4755.</p>
+    </div>
+    <div class="panel" id="stOut"><p style="color:var(--muted)">Здесь появится статус ремонта.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Почему нам доверяют</h2>
+  <p class="sub">Работаем при вас — можно посмотреть, как меняют экран.</p>
+  <div class="why">
+    <div><span>🔍</span><b>Диагностика 0 ₽</b><p>15 минут, даже если не будете ремонтировать</p></div>
+    <div><span>⏱</span><b>От 20 минут</b><p>Экран и батарея — пока пьёте кофе рядом</p></div>
+    <div><span>🧾</span><b>Цена в договоре</b><p>Называем до начала работы и не меняем</p></div>
+    <div><span>🛡</span><b>Гарантия 12 мес</b><p>На оригинальные запчасти, 6 мес — на аналоги</p></div>
+  </div>
+  <div class="photos">
+    <img src="img/parts.jpg" alt="Разобранный iPhone на коврике" loading="lazy">
+    <img src="img/gloves.jpg" alt="Замена дисплея в перчатках" loading="lazy">
+    <img src="img/board.jpg" alt="Плата смартфона крупным планом" loading="lazy">
+  </div>
+</div></section>
+
+<section id="courier" style="padding-top:0"><div class="wrap">
+  <div class="courier">
+    <div>
+      <h2>Курьер заберёт и привезёт</h2>
+      <p>По Люберцам и Котельникам — бесплатно. Приедет в течение 2 часов, на руки — акт приёма с фото устройства.</p>
+      <img src="img/cracked.jpg" alt="Смартфон с разбитым экраном" loading="lazy" style="border-radius:20px;margin-top:20px;max-height:240px;width:100%;object-fit:cover">
+    </div>
+    <form id="cForm" novalidate>
+      <input name="name" placeholder="Имя" autocomplete="given-name">
+      <input name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel">
+      <input name="addr" placeholder="Адрес" autocomplete="street-address">
+      <input name="what" id="cWhat" placeholder="Что сломалось">
+      <p class="err" id="cErr"></p>
+      <button class="btn" style="justify-content:center">Вызвать курьера</button>
+      <div class="okc" id="cOk"></div>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>Люберцы, Октябрьский проспект, 151 · ежедневно 10:00–21:00</span><span>Демонстрационный сайт: название, цены и отзывы вымышлены. Фото: Unsplash</span></div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+const MODELS = {
+  'Apple': [['iPhone 11', 1], ['iPhone 12', 1.15], ['iPhone 13', 1.3], ['iPhone 14', 1.5], ['iPhone 15', 1.75], ['iPhone 15 Pro', 2.1]],
+  'Samsung': [['Galaxy A54', .8], ['Galaxy S22', 1.3], ['Galaxy S23', 1.5], ['Galaxy S24', 1.75]],
+  'Xiaomi': [['Redmi Note 12', .6], ['Redmi Note 13', .65], ['Xiaomi 13', 1.1], ['Poco X6', .7]],
+  'Другой': [['Другая модель', 1]],
+};
+// поломка: базовая цена (для коэффициента 1), срок, оригинал/аналог
+const FAULTS = [['Разбит экран', 7900, '30–40 мин'], ['Быстро садится батарея', 3200, '20 мин'], ['Не заряжается', 2400, '40 мин'], ['Разбита задняя крышка', 4500, '1–2 ч'],
+  ['Плохо слышно собеседника', 1900, '30 мин'], ['Не работает камера', 3900, '40 мин'], ['Попала вода', 0, 'от 1 дня']];
+const PARTS = [['Оригинал', 1, '12 мес'], ['Качественный аналог', .62, '6 мес']];
+let brand = 'Apple', model = 2, fault = 0, part = 0;
+const opts = (arr, sel, f) => arr.map((a, i) => `<button type="button" class="${i === sel ? 'on' : ''}" data-i="${i}">${f(a)}</button>`).join('');
+function draw() {
+  $('oBrand').innerHTML = Object.keys(MODELS).map(b => `<button type="button" class="${b === brand ? 'on' : ''}" data-b="${b}">${b}</button>`).join('');
+  $('oModel').innerHTML = MODELS[brand].map((m, i) => `<option value="${i}" ${i === model ? 'selected' : ''}>${m[0]}</option>`).join('');
+  $('oFault').innerHTML = opts(FAULTS, fault, a => a[0]);
+  $('oPart').innerHTML = opts(PARTS, part, a => `${a[0]}<small>гарантия ${a[2]}</small>`);
+  const [mn, k] = MODELS[brand][model], [fn, base, time] = FAULTS[fault];
+  $('qDev').textContent = mn; $('qTime').textContent = time;
+  if (!base || brand === 'Другой') {
+    $('qPrice').textContent = base ? 'от ' + rub(Math.round(base * .6 / 100) * 100) : 'после диагностики';
+    $('qWar').textContent = base ? PARTS[part][2] : 'по итогам';
+  } else {
+    $('qPrice').textContent = rub(Math.round(base * k * PARTS[part][1] / 100) * 100 - 10);
+    $('qWar').textContent = PARTS[part][2];
+  }
+  $('cWhat').value = `${mn}: ${fn.toLowerCase()}`;
+}
+$('oBrand').onclick = e => { const b = e.target.closest('button'); if (!b) return; brand = b.dataset.b; model = 0; draw(); };
+$('oModel').onchange = e => { model = +e.target.value; draw(); };
+$('oFault').onclick = e => { const b = e.target.closest('button'); if (!b) return; fault = +b.dataset.i; draw(); };
+$('oPart').onclick = e => { const b = e.target.closest('button'); if (!b) return; part = +b.dataset.i; draw(); };
+
+// статус ремонта (демо-база)
+const ORDERS = {
+  '4821': ['iPhone 13 · замена экрана', 3, 'Готов к выдаче сегодня до 18:00'],
+  '4790': ['Galaxy S22 · не заряжается', 2, 'Ждём разъём — привезут завтра утром'],
+  '4755': ['Redmi Note 12 · попала вода', 1, 'Сушка и чистка платы, 2-й день'],
+};
+const STAGES = ['Принят', 'Диагностика', 'Ремонт', 'Проверка', 'Готов'];
+$('stForm').addEventListener('submit', e => {
+  e.preventDefault(); const no = $('stNo').value.replace(/\D/g, ''), o = ORDERS[no];
+  if (!o) { $('stOut').innerHTML = `<b>Заказ № ${no || '—'} не найден</b><p style="color:var(--muted);margin-top:6px">Проверьте номер в квитанции или позвоните нам.</p>`; return; }
+  const [dev, at, note] = o;
+  $('stOut').innerHTML = `<b style="font-size:20px">Заказ № ${no}</b><p style="color:var(--muted);margin:2px 0 18px">${dev}</p>
+    <ul class="tl">${STAGES.map((s, i) => `<li class="${i < at + 1 ? 'done' : ''} ${i === at + 1 ? 'cur' : ''}">${s}${i === at + 1 ? `<small>${note}</small>` : ''}</li>`).join('')}</ul>`;
+});
+$('cForm').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, miss = [];
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (!f.name.value.trim()) { miss.push('имя'); f.name.classList.add('bad'); }
+  if (f.phone.value.replace(/\D/g, '').length < 10) { miss.push('телефон'); f.phone.classList.add('bad'); }
+  if (f.addr.value.trim().length < 5) { miss.push('адрес'); f.addr.classList.add('bad'); }
+  if (miss.length) { $('cErr').textContent = 'Укажите ' + miss.join(', '); return; }
+  $('cErr').textContent = ''; $('cOk').style.display = 'block';
+  $('cOk').innerHTML = `<b>Курьер выезжает</b><br>Позвоним в течение 10 минут, чтобы согласовать время. Предварительная цена: ${$('qPrice').textContent}.`;
+});
+$('inWork').textContent = `${5 + new Date().getHours() % 6} устройств`;
+draw();
+</script>
+</body>
+</html>

@@ -16,6 +16,13 @@
 | 18 | [Автосервис «МоторДок»](18-site-autoservice/) | [открыть](https://velvety-truffle-41005c.netlify.app/autoservice/) | онлайн-запись по слотам, цены по классу авто | HTML, CSS, JS |
 | 19 | [Цветочная мастерская «Лепесток»](19-site-flowers/) | [открыть](https://velvety-truffle-41005c.netlify.app/flowers/) | каталог с фильтрами и размерами, корзина, оформление заказа | HTML, CSS, JS |
 | 20 | [Блог «Точка опоры»](20-blog/) | [открыть](https://velvety-truffle-41005c.netlify.app/blog/) | статьи с оглавлением, FAQ, Schema.org, поиск и рубрики | HTML, CSS, JS |
+| 21 | [Кофейня «Пенка»](21-site-coffee/) | [открыть](https://velvety-truffle-41005c.netlify.app/coffee/) | меню с размерами и молоком, заказ заранее ко времени, карта гостя | HTML, CSS, JS |
+| 22 | [Пекарня «Мука и соль»](22-site-bakery/) | [открыть](https://velvety-truffle-41005c.netlify.app/bakery/) | остатки на витрине, расписание печи, предзаказ, калькулятор торта | HTML, CSS, JS |
+| 23 | [Барбершоп «Бритва»](23-site-barber/) | [открыть](https://velvety-truffle-41005c.netlify.app/barber/) | цены по уровню мастера, запись: мастер → услуга → время | HTML, CSS, JS |
+| 24 | [Салон красоты «Мята»](24-site-beauty/) | [открыть](https://velvety-truffle-41005c.netlify.app/beauty/) | прайс по разделам, подбор процедуры за 3 вопроса, запись | HTML, CSS, JS |
+| 25 | [Студия маникюра «Миндаль»](25-site-nails/) | [открыть](https://velvety-truffle-41005c.netlify.app/nails/) | галерея с фильтрами, калькулятор цены и времени, запись | HTML, CSS, JS |
+| 26 | [Ремонт телефонов «Перезагрузка»](26-site-phone-repair/) | [открыть](https://velvety-truffle-41005c.netlify.app/phone-repair/) | цена по модели и поломке, статус заказа, вызов курьера | HTML, CSS, JS |
+| 27 | [Шиномонтаж «Протектор»](27-site-tires/) | [открыть](https://velvety-truffle-41005c.netlify.app/tires/) | цены по радиусу, живая очередь, запись по слотам, хранение шин | HTML, CSS, JS |
 
 ## Веб-приложения
 

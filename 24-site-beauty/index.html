@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Мята — салон красоты в Балашихе. Стрижки, окрашивание, уход за лицом</title>
+<meta name="description" content="Салон красоты «Мята» в Балашихе: стрижки и окрашивание, уход за лицом, макияж и брови. Прайс онлайн, подбор процедуры за 3 вопроса и запись без звонка.">
+<style>
+:root{--bg:#f7f5f1;--paper:#fff;--ink:#22302b;--sage:#7f9a88;--sage2:#dfe8e1;--blush:#e8c4b8;--blush2:#f8ebe6;--muted:#6f7a74;--line:#e6e2da}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.serif{font-family:Georgia,serif;font-weight:400}
+.btn{display:inline-block;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:14px 26px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--sage)}
+.btn.soft{background:var(--sage2);color:var(--ink)}.btn.soft:hover{background:var(--blush)}
+header{position:sticky;top:0;z-index:30;background:rgba(247,245,241,.92);backdrop-filter:blur(10px)}
+header .wrap{display:flex;align-items:center;gap:24px;height:70px}
+.logo{font-family:Georgia,serif;font-size:30px;text-decoration:none;color:var(--ink);font-style:italic}
+.logo b{color:var(--sage);font-style:normal}
+header nav{margin-left:auto;display:flex;gap:24px;font-size:15px}header nav a{color:var(--muted);text-decoration:none}
+.hero{padding:30px 0 70px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,5.4vw,70px);line-height:1.05;letter-spacing:-.01em}
+.hero h1 i{color:var(--sage)}
+.hero p{font-size:19px;color:var(--muted);margin:20px 0 28px;max-width:500px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.arch{position:relative}
+.arch img{border-radius:300px 300px 28px 28px;aspect-ratio:4/5;object-fit:cover;width:100%;max-height:640px}
+.badge{position:absolute;left:-26px;bottom:60px;background:var(--paper);border-radius:20px;padding:16px 18px;box-shadow:0 20px 40px -24px rgba(34,48,43,.5);font-size:14px}
+.badge b{font-family:Georgia,serif;font-size:28px;font-weight:400;display:block}
+.badge2{position:absolute;right:-14px;top:70px;background:var(--blush);border-radius:999px;padding:10px 16px;font-size:14px;font-weight:600}
+section{padding:80px 0}
+h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.1;margin-bottom:10px}
+.sub{color:var(--muted);font-size:18px;max-width:620px;margin-bottom:30px}
+/* направления */
+.dirs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dir{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;border:0;padding:0;font:inherit;text-align:left;color:#fff}
+.dir img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.dir:hover img{transform:scale(1.05)}
+.dir span{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(transparent,rgba(20,30,26,.75));font-family:Georgia,serif;font-size:24px}
+.dir small{display:block;font-family:"Segoe UI",sans-serif;font-size:13px;opacity:.85}
+/* прайс */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tabs button{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 18px;cursor:pointer;color:var(--ink)}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.plist{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:8px 26px}
+.row-p{display:grid;grid-template-columns:1fr auto auto;gap:6px 20px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.row-p:last-child{border-bottom:0}
+.row-p small{display:block;color:var(--muted);font-size:14px}
+.row-p b{font-size:17px;white-space:nowrap}
+.row-p button{font:inherit;font-size:14px;border:1px solid var(--sage);color:var(--ink);background:none;border-radius:999px;padding:7px 14px;cursor:pointer}
+.row-p button:hover{background:var(--sage);color:#fff}
+/* подбор */
+.quiz{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;background:var(--sage2);border-radius:30px;padding:40px;align-items:center}
+.quiz img{border-radius:22px;aspect-ratio:1;object-fit:cover;width:100%}
+.q{font-family:Georgia,serif;font-size:26px;margin:4px 0 16px}
+.qstep{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage)}
+.ans{display:grid;gap:10px}
+.ans button{font:inherit;text-align:left;background:var(--paper);border:1px solid transparent;border-radius:16px;padding:14px 18px;cursor:pointer;color:var(--ink)}
+.ans button:hover{border-color:var(--sage)}
+.res{background:var(--paper);border-radius:20px;padding:22px}
+.res h3{font-family:Georgia,serif;font-weight:400;font-size:26px;margin-bottom:8px}
+.res ul{margin:10px 0 16px 18px}
+.bar{height:4px;background:#fff;border-radius:4px;margin:10px 0 20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--sage);transition:.3s}
+/* мастера */
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.m{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:10px}
+.m .av{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:24px;color:var(--ink)}
+.m h3{font-size:19px}.m p{color:var(--muted);font-size:14px}
+.m .tags{display:flex;gap:6px;flex-wrap:wrap}.m .tags span{font-size:12px;background:var(--bg);border-radius:999px;padding:4px 10px}
+/* запись */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+form.card{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:30px;display:grid;gap:12px}
+form.card label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+form.card input,form.card select,form.card textarea{font:inherit;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg);outline:none}
+form.card input:focus,form.card select:focus{border-color:var(--sage)}
+.bad{border-color:#c0392b!important;background:#fff5f4!important}
+.err{color:#c0392b;font-size:14px}
+.okmsg{display:none;background:var(--sage2);border-radius:16px;padding:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info{display:grid;gap:14px}
+.info div{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px}
+.info b{display:block;margin-bottom:4px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rv{background:var(--blush2);border-radius:22px;padding:24px;font-size:15px}
+.rv b{display:block;margin-top:12px;font-size:14px}
+footer{padding:36px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:960px){.hero .wrap,.quiz,.book{grid-template-columns:1fr}.dirs{grid-template-columns:1fr 1fr}.masters,.reviews{grid-template-columns:1fr}header nav{display:none}.badge{left:10px}.badge2{right:10px}}
+@media (max-width:560px){.row-p{grid-template-columns:1fr auto}.row-p button{grid-column:1/-1;justify-self:start}.quiz{padding:24px 18px}.two{grid-template-columns:1fr}.plist{padding:4px 18px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">М<b>ята</b></a>
+  <nav><a href="#price">Прайс</a><a href="#quiz">Подбор ухода</a><a href="#masters">Мастера</a><a href="#book">Запись</a></nav>
+  <a class="btn" href="#book" style="padding:10px 20px">Записаться</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>Красота <i>без спешки</i> в центре Балашихи</h1>
+    <p>Стрижки и сложное окрашивание, уход за лицом, макияж и брови. Мастер слушает, что вы хотите, — и честно говорит, что получится.</p>
+    <div class="row"><a class="btn" href="#book">Записаться онлайн</a><a class="btn soft" href="#quiz">Подобрать процедуру</a></div>
+  </div>
+  <div class="arch">
+    <img src="img/hero.jpg" alt="Мастер делает укладку феном" width="1600" height="1068">
+    <div class="badge"><b>5,0 ★</b>371 отзыв на картах</div>
+    <div class="badge2">−15% на первый визит</div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Направления</h2>
+  <p class="sub">Нажмите — откроется прайс нужного раздела.</p>
+  <div class="dirs" id="dirs"></div>
+</div></section>
+
+<section id="price" style="padding-top:0"><div class="wrap">
+  <h2>Прайс</h2>
+  <p class="sub">Цены «от» — итог зависит от длины волос и материалов, мастер назовёт его до начала работы.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="plist" id="plist"></div>
+</div></section>
+
+<section id="quiz" style="padding-top:0"><div class="wrap">
+  <div class="quiz">
+    <img src="img/facial.jpg" alt="Уходовая маска для лица в салоне" loading="lazy">
+    <div id="quizBox"></div>
+  </div>
+</div></section>
+
+<section id="masters" style="padding-top:0"><div class="wrap">
+  <h2>Мастера</h2>
+  <p class="sub">Каждый мастер учится минимум дважды в год — сертификаты висят на ресепшене.</p>
+  <div class="masters">
+    <div class="m"><div class="av" style="background:var(--blush)">ЕК</div><h3>Екатерина</h3><p>Колорист, 11 лет. Блонд, airtouch, исправление неудачного окрашивания.</p><div class="tags"><span>окрашивание</span><span>блонд</span></div></div>
+    <div class="m"><div class="av" style="background:var(--sage2)">ОЛ</div><h3>Ольга</h3><p>Косметолог-эстетист, 8 лет. Чистки, пилинги, уходы по типу кожи.</p><div class="tags"><span>лицо</span><span>уход</span></div></div>
+    <div class="m"><div class="av" style="background:#efe6d8">ДА</div><h3>Дарья</h3><p>Визажист и бровист, 6 лет. Свадебный и вечерний макияж, ламинирование.</p><div class="tags"><span>макияж</span><span>брови</span></div></div>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap">
+  <div class="book">
+    <form class="card" id="bookForm" novalidate>
+      <h2 style="font-size:36px">Запись</h2>
+      <label>Услуга<select name="svc" id="svc"></select></label>
+      <div class="two"><label>Дата<input type="date" name="date" id="date"></label><label>Время<select name="time"><option>10:00</option><option>12:00</option><option>14:00</option><option>16:00</option><option>18:00</option><option>20:00</option></select></label></div>
+      <div class="two"><label>Имя<input name="name" autocomplete="given-name"></label><label>Телефон<input name="phone" inputmode="tel" autocomplete="tel" placeholder="+7"></label></div>
+      <label>Пожелания<textarea name="note" rows="2" placeholder="Например: хочу светлее на 2 тона"></textarea></label>
+      <p class="err" id="bErr"></p>
+      <button class="btn">Записаться</button>
+      <div class="okmsg" id="bOk"></div>
+    </form>
+    <div class="info">
+      <div><b>Адрес</b>Балашиха, ул. Советская, 5, 2 этаж · парковка во дворе</div>
+      <div><b>Часы работы</b>Ежедневно 9:00–21:00</div>
+      <div><b>Телефон</b><a href="tel:+74950000000" style="color:var(--ink)">+7 495 000-00-00</a> · WhatsApp, Telegram</div>
+      <img src="img/interior.jpg" alt="Интерьер салона" loading="lazy" style="border-radius:20px;aspect-ratio:16/10;object-fit:cover;width:100%">
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Отзывы</h2>
+  <p class="sub">С Яндекс Карт.</p>
+  <div class="reviews">
+    <div class="rv">Екатерина вытянула меня из рыжего после домашнего окрашивания за один визит — и волосы живые.<b>Марина</b></div>
+    <div class="rv">Хожу к Ольге на чистки полгода, кожа правда стала ровнее. Без навязывания косметики.<b>Алина</b></div>
+    <div class="rv">Делала свадебный макияж у Дарьи — продержался до утра, на фото идеально.<b>Ксения</b></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Салон красоты «Мята». Демонстрационный сайт: название, мастера и отзывы вымышлены.</span><span>Фото: Unsplash</span></div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const rub = n => 'от ' + n.toLocaleString('ru-RU') + ' ₽';
+const PRICE = {
+  'Волосы': [['Женская стрижка', 'Мытьё, стрижка, укладка', 1800], ['Окрашивание в один тон', 'Корни или по всей длине', 3500], ['Airtouch / шатуш', 'Сложное окрашивание с тонированием', 8500], ['Уход-восстановление', 'Кератин или ботокс для волос', 4000], ['Укладка', 'Локоны, гладкая или объём', 1500]],
+  'Лицо': [['Чистка комбинированная', 'Ультразвук + механическая', 3200], ['Пилинг', 'Подбираем по типу кожи', 2800], ['Уход «Увлажнение»', 'Маска, массаж, сыворотка', 3000], ['Массаж лица', 'Скульптурный, 45 минут', 2500]],
+  'Макияж': [['Дневной макияж', 'Лёгкий, естественный', 2500], ['Вечерний макияж', 'Стойкий, с акцентом', 3500], ['Свадебный', 'С пробным макияжем', 7000]],
+  'Брови и ресницы': [['Коррекция и окрашивание бровей', 'Форма под лицо', 1200], ['Ламинирование бровей', 'Держится 6 недель', 2200], ['Ламинирование ресниц', 'С окрашиванием', 2400]],
+};
+const DIRS = [['Волосы', 'cut', 'стрижки и окрашивание'], ['Лицо', 'facial', 'чистки и уходы'], ['Макияж', 'makeup', 'дневной и вечерний'], ['Брови и ресницы', 'color', 'форма и ламинирование']];
+let tab = 'Волосы';
+$('dirs').innerHTML = DIRS.map(([n, img, d]) => `<button class="dir" data-t="${n}"><img src="img/${img}.jpg" alt="${n}" loading="lazy"><span>${n}<small>${d}</small></span></button>`).join('');
+$('dirs').onclick = e => { const b = e.target.closest('.dir'); if (!b) return; tab = b.dataset.t; draw(); $('price').scrollIntoView(); };
+function draw() {
+  $('tabs').innerHTML = Object.keys(PRICE).map(t => `<button class="${t === tab ? 'on' : ''}">${t}</button>`).join('');
+  $('plist').innerHTML = PRICE[tab].map(([n, d, p]) => `<div class="row-p"><div>${n}<small>${d}</small></div><b>${rub(p)}</b><button data-s="${n}">Записаться</button></div>`).join('');
+}
+$('tabs').onclick = e => { if (e.target.tagName !== 'BUTTON') return; tab = e.target.textContent; draw(); };
+$('plist').onclick = e => { const b = e.target.closest('[data-s]'); if (!b) return; $('svc').value = b.dataset.s; $('book').scrollIntoView(); };
+$('svc').innerHTML = Object.entries(PRICE).map(([g, list]) => `<optgroup label="${g}">${list.map(([n]) => `<option>${n}</option>`).join('')}</optgroup>`).join('');
+const d0 = new Date(); d0.setDate(d0.getDate() + 1); $('date').valueAsDate = d0; $('date').min = new Date().toISOString().slice(0, 10);
+
+// подбор процедуры: 3 вопроса → рекомендация
+const QUIZ = [
+  ['Что хочется изменить?', [['Волосы', 'h'], ['Кожу лица', 'f'], ['Образ к событию', 'e']]],
+  ['Как давно были в салоне?', [['Меньше месяца назад', 0], ['1–3 месяца', 1], ['Больше полугода', 2]]],
+  ['Сколько есть времени?', [['До часа', 0], ['1–2 часа', 1], ['Готова провести полдня', 2]]],
+];
+const REC = {
+  h: [['Стрижка + уход-восстановление', ['Освежим форму', 'Уход вернёт блеск после лета'], 'Уход-восстановление'], ['Окрашивание в один тон', ['Закрасим корни и седину', 'Тонирование по длине'], 'Окрашивание в один тон'], ['Airtouch с уходом', ['Мягкий переход цвета', 'Не нужно часто подкрашивать'], 'Airtouch / шатуш']],
+  f: [['Уход «Увлажнение»', ['Маска и массаж', 'Подходит перед событием'], 'Уход «Увлажнение»'], ['Комбинированная чистка', ['Очистим поры', 'Подберём домашний уход'], 'Чистка комбинированная'], ['Чистка + пилинг', ['Ровный тон', 'Курс из 3 процедур'], 'Пилинг']],
+  e: [['Дневной макияж', ['Естественно и быстро'], 'Дневной макияж'], ['Вечерний макияж + укладка', ['Стойкий макияж', 'Укладка в тон образу'], 'Вечерний макияж'], ['Свадебный образ', ['Пробный макияж заранее', 'Причёска и макияж в день события'], 'Свадебный']],
+};
+let step = 0, ans = [];
+function drawQuiz() {
+  if (step < QUIZ.length) {
+    const [q, opts] = QUIZ[step];
+    $('quizBox').innerHTML = `<div class="qstep">Подбор процедуры · вопрос ${step + 1} из 3</div><div class="bar"><i style="width:${step / 3 * 100}%"></i></div>
+      <div class="q">${q}</div><div class="ans">${opts.map(([t, v], i) => `<button data-i="${i}">${t}</button>`).join('')}</div>`;
+  } else {
+    const [title, why, svc] = REC[ans[0]][Math.min(2, Math.round((ans[1] + ans[2]) / 2))];
+    $('quizBox').innerHTML = `<div class="qstep">Ваш результат</div><div class="bar"><i style="width:100%"></i></div>
+      <div class="res"><h3>${title}</h3><ul>${why.map(w => `<li>${w}</li>`).join('')}</ul>
+      <button class="btn" id="qBook" data-s="${svc}">Записаться на эту процедуру</button> <button class="btn soft" id="qAgain">Пройти заново</button></div>`;
+    $('qBook').onclick = () => { $('svc').value = svc; $('book').scrollIntoView(); };
+    $('qAgain').onclick = () => { step = 0; ans = []; drawQuiz(); };
+  }
+}
+$('quizBox').addEventListener('click', e => { const b = e.target.closest('.ans button'); if (!b) return; ans.push(QUIZ[step][1][+b.dataset.i][1]); step++; drawQuiz(); });
+$('bookForm').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, miss = [];
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (!f.name.value.trim()) { miss.push('имя'); f.name.classList.add('bad'); }
+  if (f.phone.value.replace(/\D/g, '').length < 10) { miss.push('телефон'); f.phone.classList.add('bad'); }
+  if (!f.date.value) { miss.push('дату'); f.date.classList.add('bad'); }
+  if (miss.length) { $('bErr').textContent = 'Укажите ' + miss.join(', '); return; }
+  $('bErr').textContent = '';
+  const d = new Date(f.date.value).toLocaleDateString('ru-RU', {day: 'numeric', month: 'long', weekday: 'long'});
+  $('bOk').style.display = 'block';
+  $('bOk').innerHTML = `<b>Заявка принята</b><br>${f.svc.value} · ${d}, ${f.time.value}. Администратор подтвердит запись в течение 15 минут. Скидка 15% на первый визит уже учтена.`;
+});
+draw(); drawQuiz();
+</script>
+</body>
+</html>

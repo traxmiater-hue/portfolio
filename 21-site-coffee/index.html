@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Пенка — кофейня в Красногорске. Кофе с собой без очереди</title>
+<meta name="description" content="Кофейня «Пенка» в Красногорске: спешелти-кофе, выпечка и завтраки. Закажите заранее на сайте и заберите без очереди. Каждый 6-й кофе в подарок.">
+<style>
+:root{--cream:#f6efe6;--paper:#fffaf3;--esp:#2b1d16;--esp2:#4a342a;--car:#c8793a;--car2:#e9a76b;--muted:#7d6a5e;--line:#e7dccd}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--esp);line-height:1.55}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--esp);color:#fff;border:0;border-radius:999px;padding:14px 24px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--car)}
+.btn.light{background:transparent;color:var(--esp);box-shadow:inset 0 0 0 1.5px var(--esp)}
+.btn.light:hover{background:var(--esp);color:#fff}
+header{position:sticky;top:0;z-index:30;background:rgba(246,239,230,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:22px;height:66px}
+.logo{font-family:Georgia,serif;font-size:28px;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0 22%,var(--car2) 23% 48%,var(--esp) 49%);display:block}
+header nav{margin-left:auto;display:flex;gap:22px;font-size:15px}
+header nav a{text-decoration:none;color:var(--esp2)}
+.cartbtn{position:relative;background:var(--esp);color:#fff;border:0;border-radius:999px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}
+.cartbtn b{position:absolute;top:-6px;right:-6px;background:var(--car);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px}
+/* первый экран */
+.hero{padding:44px 0 70px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.kicker{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:600;color:var(--car)}
+.kicker i{width:8px;height:8px;border-radius:50%;background:#3fae5a;box-shadow:0 0 0 4px #3fae5a33}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,5.6vw,74px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 18px}
+h1 em{color:var(--car);font-style:italic}
+.lead{font-size:19px;color:var(--esp2);max-width:520px}
+.hero .cta{display:flex;gap:12px;margin:28px 0 30px;flex-wrap:wrap}
+.facts{display:flex;gap:30px;flex-wrap:wrap}
+.facts b{display:block;font-family:Georgia,serif;font-size:30px;font-weight:400}
+.facts span{font-size:14px;color:var(--muted)}
+.collage{position:relative;height:540px}
+.collage img{position:absolute;object-fit:cover;border-radius:24px;box-shadow:0 30px 60px -30px rgba(43,29,22,.55)}
+.collage .a{inset:0 18% 12% 0;width:82%;height:88%}
+.collage .b{right:0;bottom:0;width:42%;height:52%;border:6px solid var(--cream)}
+.collage .tag{position:absolute;left:18px;bottom:22px;background:var(--paper);border-radius:16px;padding:12px 16px;font-size:14px;box-shadow:0 14px 30px -18px rgba(0,0,0,.4)}
+.collage .tag b{display:block;font-size:16px}
+/* секции */
+section{padding:80px 0}
+h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.1;margin-bottom:12px}
+.sub{color:var(--muted);font-size:18px;max-width:620px;margin-bottom:32px}
+/* как работает */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px}
+.step b{font-family:Georgia,serif;font-size:42px;font-weight:400;color:var(--car);display:block;line-height:1}
+.step h3{margin:12px 0 6px;font-size:19px}.step p{color:var(--muted);font-size:15px}
+/* меню */
+.menu-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;cursor:pointer;color:var(--esp)}
+.tabs button.on{background:var(--esp);color:#fff;border-color:var(--esp)}
+.milk{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--muted)}
+.milk select{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:7px 10px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.item{display:grid;grid-template-columns:1fr auto;gap:10px 18px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.item h3{font-size:17px}.item p{font-size:14px;color:var(--muted);grid-column:1}
+.item .lbl{font-size:12px;font-weight:700;color:var(--car);margin-left:6px}
+.sizes{display:flex;gap:6px;grid-row:1/3;grid-column:2;align-items:center}
+.sizes button{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;cursor:pointer;display:grid;gap:1px;text-align:center;min-width:64px}
+.sizes button small{color:var(--muted);font-size:11px}
+.sizes button:hover{border-color:var(--car);background:#fff6ec}
+/* фото-лента */
+.strip{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.strip img{width:100%;height:100%;object-fit:cover;border-radius:20px}
+.strip .big{grid-row:1/3}
+/* карта лояльности */
+.loyal{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:var(--esp);color:#fff;border-radius:32px;padding:44px}
+.loyal h2{color:#fff}.loyal p{color:#d9c8bb}
+.cups{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:22px 0 10px}
+.cups i{aspect-ratio:1;border-radius:50%;border:2px dashed #7b6153;display:grid;place-items:center;font-style:normal;font-size:22px}
+.cups i.on{background:var(--car);border:2px solid var(--car)}
+.cups i.gift{border-color:var(--car2);color:var(--car2)}
+.loyal small{color:#bfa898}
+/* отзывы и контакты */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;font-size:15px}
+.review .st{color:var(--car);letter-spacing:2px}.review b{display:block;margin-top:10px;font-size:14px}
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin-top:14px}
+.card dt{color:var(--muted)}
+.map{border-radius:22px;overflow:hidden;min-height:280px;background:linear-gradient(135deg,#e9dccb,#d9c6ae);position:relative}
+.map::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 58px,rgba(255,255,255,.45) 58px 62px),repeating-linear-gradient(0deg,transparent 0 70px,rgba(255,255,255,.45) 70px 74px)}
+.pin{position:absolute;left:52%;top:44%;background:var(--esp);color:#fff;border-radius:14px;padding:8px 12px;font-size:14px;font-weight:700}
+.pin::after{content:"";position:absolute;left:18px;bottom:-8px;border:8px solid transparent;border-top-color:var(--esp);border-bottom:0}
+footer{padding:34px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* заказ */
+.ov{position:fixed;inset:0;background:rgba(43,29,22,.45);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(430px,100%);background:var(--cream);z-index:41;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.open .ov{opacity:1;pointer-events:auto}.open .drawer{transform:none}
+.drawer .top{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
+.drawer .x{background:none;border:0;font-size:28px;cursor:pointer;line-height:1}
+.lines{flex:1;overflow:auto;padding:10px 22px}
+.line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.line small{color:var(--muted);display:block}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+form.co{padding:18px 22px;border-top:1px solid var(--line);display:grid;gap:10px;background:var(--paper)}
+form.co input{font:inherit;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff;outline:none}
+form.co input:focus{border-color:var(--car)}
+form.co .bad{border-color:#c0392b;background:#fff5f4}
+.times{display:flex;gap:6px;flex-wrap:wrap}
+.times button{font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 11px;cursor:pointer}
+.times button.on{background:var(--esp);color:#fff;border-color:var(--esp)}
+.sum{display:flex;justify-content:space-between;font-size:18px;font-weight:700}
+.err{color:#c0392b;font-size:14px;min-height:0}
+.done{padding:34px 22px;text-align:center;display:grid;gap:12px;justify-items:center}
+.done .code{font-family:Georgia,serif;font-size:44px;color:var(--car)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);background:var(--esp);color:#fff;padding:12px 18px;border-radius:999px;z-index:50;transition:.3s;opacity:0;visibility:hidden;font-size:15px}
+.toast.show{transform:translate(-50%,0);opacity:1;visibility:visible}
+@media (max-width:920px){.hero .wrap,.loyal,.contacts{grid-template-columns:1fr}.collage{height:420px}.items{grid-template-columns:1fr}.steps,.reviews{grid-template-columns:1fr}header nav{display:none}.strip{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}.strip .big{grid-row:auto;grid-column:1/3}}
+@media (max-width:560px){.item{grid-template-columns:1fr}.sizes{grid-row:auto;grid-column:1;flex-wrap:wrap}.loyal{padding:28px 22px}.collage{height:340px}.facts{gap:20px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><i></i>Пенка</a>
+  <nav><a href="#menu">Меню</a><a href="#how">Заказ заранее</a><a href="#loyal">Карта гостя</a><a href="#contacts">Контакты</a></nav>
+  <button class="cartbtn" id="cartBtn">Заказ <b id="cnt">0</b></button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="kicker"><i></i><span id="openNow">Открыто до 22:00</span></span>
+    <h1>Кофе <em>без очереди</em> — по дороге на работу</h1>
+    <p class="lead">Закажите на сайте за минуту и заберите горячим к нужному времени. Своя обжарка, свежая выпечка каждое утро, альтернативное молоко без доплаты по средам.</p>
+    <div class="cta"><a class="btn" href="#menu">Выбрать кофе</a><a class="btn light" href="#how">Как это работает</a></div>
+    <div class="facts"><div><b>4,9 ★</b><span>581 отзыв на картах</span></div><div><b>7 мин</b><span>от заказа до стакана</span></div><div><b>6-й</b><span>кофе в подарок</span></div></div>
+  </div>
+  <div class="collage">
+    <img class="a" src="img/hero.jpg" alt="Зал кофейни «Пенка» с деревянными столами" width="1600" height="1067">
+    <img class="b" src="img/latte.jpg" alt="Латте с рисунком на пенке" width="900" height="504">
+    <div class="tag"><b>Сегодня в фильтре</b>Эфиопия Иргачефф · ягоды, жасмин</div>
+  </div>
+</div></section>
+
+<section id="how" style="padding-top:20px"><div class="wrap">
+  <h2>Заказ заранее — три шага</h2>
+  <p class="sub">Пока вы идёте до нас, бариста уже готовит. На стойке назовите код из подтверждения.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Выберите напитки</h3><p>Размер, молоко, сироп — как вы привыкли. Можно добавить выпечку.</p></div>
+    <div class="step"><b>2</b><h3>Укажите время</h3><p>Через 10, 15, 20 минут или ко времени — приготовим ровно к нему.</p></div>
+    <div class="step"><b>3</b><h3>Заберите по коду</h3><p>Оплата на месте картой или по СБП. Отметка в карте гостя — автоматически.</p></div>
+  </div>
+</div></section>
+
+<section id="menu" style="padding-top:0"><div class="wrap">
+  <div class="menu-head">
+    <div><h2>Меню</h2><p class="sub" style="margin:0">Цены за 250 / 350 / 450 мл.</p></div>
+    <label class="milk">Молоко <select id="milk"><option value="0">коровье</option><option value="60">овсяное +60 ₽</option><option value="60">миндальное +60 ₽</option><option value="0">без молока</option></select></label>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="items" id="items" style="margin-top:18px"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="strip">
+    <img class="big" src="img/barista.jpg" alt="Бариста наливает молоко в капучино" loading="lazy" width="900" height="600">
+    <img src="img/croissant.jpg" alt="Капучино и круассан" loading="lazy" width="900" height="1350">
+    <img src="img/machine.jpg" alt="Кофемашина и меню на доске" loading="lazy" width="900" height="1350">
+    <img src="img/beans.jpg" alt="Зёрна нашей обжарки" loading="lazy" width="900" height="686">
+    <img src="img/cup.jpg" alt="Два капучино на столе" loading="lazy" width="900" height="1350">
+  </div>
+</div></section>
+
+<section id="loyal" style="padding-top:0"><div class="wrap">
+  <div class="loyal">
+    <div>
+      <h2>Карта гостя — без пластика</h2>
+      <p>Каждый заказ с сайта ставит отметку. Шестой кофе — за наш счёт, любого размера.</p>
+      <div class="cups" id="cups"></div>
+      <small id="cupsNote"></small>
+    </div>
+    <img src="img/flatlay.jpg" alt="Капучино, молотый кофе и зёрна" loading="lazy" style="border-radius:22px;max-height:380px;width:100%;object-fit:cover" width="900" height="1350">
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Что говорят гости</h2>
+  <p class="sub">Отзывы с Яндекс Карт.</p>
+  <div class="reviews">
+    <div class="review"><div class="st">★★★★★</div><p>Заказываю с сайта, пока иду от станции, — забираю за 30 секунд. Раф на овсяном лучший в районе.</p><b>Ирина</b></div>
+    <div class="review"><div class="st">★★★★★</div><p>Круассаны правда утренние, хрустят. Бариста помнит, что я пью без сахара.</p><b>Денис</b></div>
+    <div class="review"><div class="st">★★★★★</div><p>Уютно поработать с ноутбуком: розетки у каждого стола и тихая музыка.</p><b>Анастасия</b></div>
+  </div>
+</div></section>
+
+<section id="contacts" style="padding-top:0"><div class="wrap">
+  <div class="contacts">
+    <div class="card">
+      <h2 style="font-size:36px">Приходите</h2>
+      <dl><dt>Адрес</dt><dd>Красногорск, бульвар Строителей, 4 — у выхода из ТЦ</dd>
+        <dt>Часы</dt><dd>Пн–Пт 7:30–22:00 · Сб–Вс 9:00–22:00</dd>
+        <dt>Телефон</dt><dd><a href="tel:+74950000000">+7 495 000-00-00</a></dd>
+        <dt>Wi-Fi</dt><dd>«Пенка», пароль на стойке</dd></dl>
+      <p style="margin-top:22px"><a class="btn" href="#menu">Заказать заранее</a></p>
+    </div>
+    <div class="map" aria-label="Схема проезда"><span class="pin">Пенка ☕</span></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Кофейня «Пенка». Демонстрационный сайт: название, адрес и отзывы вымышлены.</span><span>Фото: Unsplash</span></div></footer>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" aria-label="Заказ">
+  <div class="top"><h3 class="serif" style="font-size:26px">Ваш заказ</h3><button class="x" id="close" aria-label="Закрыть">×</button></div>
+  <div class="lines" id="lines"></div>
+  <form class="co" id="co" novalidate>
+    <div><small style="color:var(--muted)">Заберу</small><div class="times" id="times"></div></div>
+    <input name="name" placeholder="Имя — назовём при выдаче" autocomplete="given-name">
+    <input name="phone" inputmode="tel" placeholder="Телефон" autocomplete="tel">
+    <div class="sum"><span>Итого</span><span id="total">0 ₽</span></div>
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn" type="submit" style="justify-content:center">Отправить бариста</button>
+  </form>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const SIZES = ['S', 'M', 'L'];
+const MENU = {
+  'Кофе': [
+    ['Эспрессо', 'Наша обжарка, бленд Бразилия + Колумбия', [140]],
+    ['Американо', 'Эспрессо и горячая вода', [170, 200, 230]],
+    ['Капучино', 'Плотная пенка, рисунок от бариста', [210, 250, 290], 'хит'],
+    ['Латте', 'Больше молока, мягкий вкус', [220, 260, 300]],
+    ['Флэт уайт', 'Двойной эспрессо и немного молока', [260]],
+    ['Раф ванильный', 'Сливки, ваниль, взбиваем паром', [260, 300, 340]],
+    ['Фильтр дня', 'Воронка V60, сорт меняется каждую неделю', [220, 260]],
+    ['Раф «Халва»', 'Сезонный: халва, сливки, щепотка соли', [290, 330, 370], 'новинка'],
+  ],
+  'Не кофе': [
+    ['Какао', 'Бельгийский шоколад и молоко', [210, 250, 290]],
+    ['Матча латте', 'Японская матча, мягкая и травянистая', [260, 300, 340]],
+    ['Чай листовой', 'Сенча, ассам или облепиховый', [180, 220]],
+    ['Лимонад', 'Маракуйя–мята или клубника–базилик', [250, 290]],
+  ],
+  'Выпечка': [
+    ['Круассан', 'Сливочное масло 82%, печём с 7 утра', [160]],
+    ['Синнабон', 'Корица и сливочный крем', [190]],
+    ['Миндальный круассан', 'С франжипаном и лепестками миндаля', [230]],
+    ['Чизкейк Сан-Себастьян', 'Карамельная корочка, кремовый центр', [290]],
+  ],
+  'Завтраки': [
+    ['Сырники', 'Со сметаной и ягодным соусом', [350]],
+    ['Боул с гранолой', 'Йогурт, гранола, сезонные ягоды', [320]],
+    ['Сэндвич с яйцом', 'Бриошь, яйцо пашот, сыр, шпинат', [380]],
+  ],
+};
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+let tab = 'Кофе', cart = JSON.parse(localStorage.getItem('penka-cart') || '[]'), when = 'через 15 мин';
+let stamps = +localStorage.getItem('penka-stamps') || 2;
+const $ = id => document.getElementById(id);
+
+function drawTabs() { $('tabs').innerHTML = Object.keys(MENU).map(t => `<button class="${t === tab ? 'on' : ''}">${t}</button>`).join(''); }
+function drawItems() {
+  $('items').innerHTML = MENU[tab].map(([n, d, p, lbl], i) => `<article class="item"><h3>${n}${lbl ? `<span class="lbl">${lbl}</span>` : ''}</h3>
+    <div class="sizes">${p.map((pr, s) => `<button data-i="${i}" data-s="${s}" aria-label="Добавить ${n} ${p.length > 1 ? SIZES[s] : ''}">${p.length > 1 ? `<small>${SIZES[s]}</small>` : ''}<b>${rub(pr)}</b></button>`).join('')}</div>
+    <p>${d}</p></article>`).join('');
+}
+$('tabs').onclick = e => { if (e.target.tagName !== 'BUTTON') return; tab = e.target.textContent; drawTabs(); drawItems(); };
+$('items').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const [n, , p] = MENU[tab][+b.dataset.i], s = +b.dataset.s, isDrink = tab === 'Кофе' || tab === 'Не кофе';
+  const milkSel = $('milk'), milk = isDrink && n !== 'Эспрессо' ? milkSel.options[milkSel.selectedIndex].text.replace(/ \+.*/, '') : '';
+  const extra = isDrink ? +milkSel.value : 0, key = `${n}|${s}|${milk}`;
+  const it = cart.find(c => c.key === key);
+  it ? it.q++ : cart.push({key, n, size: p.length > 1 ? SIZES[s] : '', milk, price: p[s] + extra, q: 1});
+  save(); toast(`${n} — в заказе`);
+};
+function save() { localStorage.setItem('penka-cart', JSON.stringify(cart)); drawCart(); }
+function drawCart() {
+  $('cnt').textContent = cart.reduce((t, c) => t + c.q, 0);
+  $('lines').innerHTML = cart.length ? cart.map((c, i) => `<div class="line"><div>${c.n}<small>${[c.size, c.milk].filter(Boolean).join(' · ') || '&nbsp;'}</small></div>
+    <div class="qty"><button data-k="${i}" data-d="-1">−</button>${c.q}<button data-k="${i}" data-d="1">+</button><b style="min-width:70px;text-align:right">${rub(c.price * c.q)}</b></div></div>`).join('')
+    : '<p class="empty">Пока пусто — выберите напиток в меню</p>';
+  $('total').textContent = rub(cart.reduce((t, c) => t + c.price * c.q, 0));
+  $('co').style.display = cart.length ? '' : 'none';
+}
+$('lines').onclick = e => { const b = e.target.closest('[data-k]'); if (!b) return; const c = cart[+b.dataset.k]; c.q += +b.dataset.d; if (c.q <= 0) cart.splice(+b.dataset.k, 1); save(); };
+const TIMES = ['через 10 мин', 'через 15 мин', 'через 20 мин', 'через 30 мин', 'к 8:30', 'к 9:00'];
+$('times').innerHTML = TIMES.map(t => `<button type="button" class="${t === when ? 'on' : ''}">${t}</button>`).join('');
+$('times').onclick = e => { if (e.target.tagName !== 'BUTTON') return; when = e.target.textContent; [...$('times').children].forEach(b => b.classList.toggle('on', b === e.target)); };
+const body = document.body;
+$('cartBtn').onclick = () => body.classList.add('open');
+$('close').onclick = $('ov').onclick = () => body.classList.remove('open');
+$('co').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target, bad = [];
+  if (!f.name.value.trim()) bad.push([f.name, 'имя']);
+  if (f.phone.value.replace(/\D/g, '').length < 10) bad.push([f.phone, 'телефон']);
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (bad.length) { bad.forEach(([el]) => el.classList.add('bad')); bad[0][0].focus(); $('err').textContent = 'Заполните: ' + bad.map(b => b[1]).join(', '); return; }
+  const code = String(Math.floor(100 + Math.random() * 900)), total = $('total').textContent;
+  // в реальном проекте заказ уходит на планшет бариста (Telegram-бот или касса)
+  console.log('Заказ', code, when, f.name.value, f.phone.value, cart);
+  cart = []; save(); stamps = Math.min(6, stamps + 1); localStorage.setItem('penka-stamps', stamps); drawCups();
+  $('lines').innerHTML = `<div class="done"><p>Заказ принят — приготовим <b>${when}</b></p><div class="code">${code}</div>
+    <p>Назовите этот код на стойке. Итого к оплате: <b>${total}</b>.<br>В карте гостя +1 отметка.</p>
+    <button class="btn" type="button" onclick="document.body.classList.remove('open');drawCart()">Хорошо</button></div>`;
+  $('co').style.display = 'none'; f.reset(); $('err').textContent = '';
+});
+function drawCups() {
+  $('cups').innerHTML = Array.from({length: 6}, (_, i) => i < stamps ? '<i class="on">☕</i>' : i === 5 ? '<i class="gift">🎁</i>' : '<i></i>').join('');
+  $('cupsNote').textContent = stamps >= 6 ? 'Следующий кофе — подарок! Скажите бариста.' : `Отмечено ${stamps} из 6 — ещё ${6 - stamps} до подарка. Демо: оформите заказ, отметка добавится.`;
+}
+function openNow() {
+  const d = new Date(), h = d.getHours() + d.getMinutes() / 60, wk = d.getDay() % 6 !== 0, from = wk ? 7.5 : 9;
+  $('openNow').textContent = h >= from && h < 22 ? 'Открыто до 22:00' : `Закрыто · откроемся в ${wk ? '7:30' : '9:00'}`;
+}
+let tt; function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2200); }
+drawTabs(); drawItems(); drawCart(); drawCups(); openNow();
+</script>
+</body>
+</html>
