@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Гнатология в клинике «Дента Лайн» — лечение ВНЧС и выравнивание прикуса</title>
+<meta name="description" content="Лечим щелчки и боли в челюсти, выравниваем прикус. Диагностика ВНЧС за 1 визит. Москва, м. Белорусская.">
+<style>
+:root{--ink:#0f2a33;--muted:#5b7179;--mint:#14b8a6;--mint-d:#0d9488;--sky:#e6f7f5;--line:#d7e7e6;--warm:#fff7ed}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:28px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--mint),#38bdf8);display:grid;place-items:center;color:#fff;font-style:normal}
+.nav nav{display:flex;gap:22px;margin-left:auto;font-size:15px;color:var(--muted)}
+.nav nav a{text-decoration:none}
+.phone{font-weight:700;text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:700;padding:14px 24px;border-radius:14px;background:var(--mint);color:#fff;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--mint-d);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.hero{padding:56px 0 72px;background:radial-gradient(900px 400px at 85% 10%,#ccfbf1 0,transparent 60%),linear-gradient(#f4fbfa,#fff)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.kicker{display:inline-block;background:var(--sky);color:var(--mint-d);font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px}
+h1{font-size:50px;line-height:1.08;letter-spacing:-.02em;margin:16px 0 18px}
+h1 em{font-style:normal;color:var(--mint-d)}
+.lead{font-size:19px;color:var(--muted);max-width:520px}
+.hero .cta{display:flex;gap:12px;margin:28px 0 24px;flex-wrap:wrap}
+.facts{display:flex;gap:28px}
+.facts b{display:block;font-size:26px}
+.facts span{font-size:14px;color:var(--muted)}
+/* шторка «Проблема / Решение» */
+.compare{position:relative;aspect-ratio:4/3.2;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(15,42,51,.45);user-select:none;touch-action:none;cursor:ew-resize}
+.pane{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:26px}
+.pane.before{background:linear-gradient(160deg,#fde2e2,#fbcfcf)}
+.pane.after{background:linear-gradient(160deg,#d1fae5,#a7f3d0);clip-path:inset(0 0 0 var(--pos,50%))}
+.pane h3{font-size:22px}
+.pane ul{padding-left:18px;color:#334155;font-size:15px}
+.pane .tag{position:absolute;top:22px;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:#fff}
+.before .tag{left:22px;color:#dc2626}.after .tag{right:22px;color:#059669}
+.pane.after h3,.pane.after ul{margin-left:auto;text-align:right;list-style:none}
+.jaw{position:absolute;top:18%;left:50%;width:62%;transform:translateX(-50%)}
+.handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.handle::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:800;color:var(--mint-d);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+section{padding:80px 0}
+h2{font-size:38px;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+.sub{color:var(--muted);font-size:18px;max-width:640px;margin-bottom:40px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:1px solid var(--line);border-radius:22px;padding:26px;background:#fff;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -25px rgba(15,42,51,.35);border-color:#99f6e4}
+.card .ic{width:48px;height:48px;border-radius:14px;background:var(--sky);display:grid;place-items:center;font-size:24px;margin-bottom:14px}
+.card h3{font-size:19px;margin-bottom:6px}.card p{color:var(--muted);font-size:15px}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{counter-increment:s;background:var(--sky);border-radius:22px;padding:24px;position:relative}
+.step::before{content:counter(s,decimal-leading-zero);font-size:44px;font-weight:800;color:#99f6e4;line-height:1}
+.step h3{font-size:18px;margin:10px 0 6px}.step p{font-size:14px;color:var(--muted)}
+.doctor{display:grid;grid-template-columns:380px 1fr;gap:44px;align-items:center;background:var(--warm);border-radius:32px;padding:40px}
+.photo{aspect-ratio:4/5;border-radius:24px;background:#e7e2dc;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.photo .exp{position:absolute;left:14px;bottom:14px;background:#fff;border-radius:14px;padding:8px 12px;font-size:13px;font-weight:700;box-shadow:0 10px 24px -12px rgba(0,0,0,.35)}
+.doctor h3{font-size:28px}.doctor .role{color:var(--mint-d);font-weight:700;margin-bottom:16px}
+.doctor li{margin:6px 0 6px 18px}
+.prices{width:100%;border-collapse:collapse;font-size:16px}
+.prices td{padding:16px 6px;border-bottom:1px solid var(--line)}
+.prices td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.faq summary::after{content:"+";color:var(--mint-d);font-size:24px;transition:.2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--muted);margin-top:10px}
+.form-box{background:var(--ink);color:#fff;border-radius:32px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-box h2{color:#fff}.form-box .sub{color:#a5c4c9}
+form{display:grid;gap:14px}
+input,select{font:inherit;padding:15px 16px;border-radius:14px;border:2px solid transparent;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--mint)}
+input.bad{border-color:#f87171}
+.err{color:#fca5a5;font-size:14px;min-height:20px}
+.ok{display:none;background:#134e4a;border-radius:16px;padding:20px;font-weight:600}
+.consent{font-size:13px;color:#a5c4c9}
+footer{padding:36px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+ .hero .wrap,.doctor,.form-box{grid-template-columns:1fr}
+ h1{font-size:36px}.cards,.steps{grid-template-columns:1fr 1fr}
+ .nav nav{display:none}.form-box{padding:28px}.doctor{padding:24px}
+}
+@media (max-width:560px){.photo{aspect-ratio:1/1}.cards,.steps{grid-template-columns:1fr}.facts{gap:16px}.phone{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#"><i>Д</i>Дента Лайн</a>
+  <nav><a href="#how">Как лечим</a><a href="#doctor">Врач</a><a href="#prices">Цены</a><a href="#faq">Вопросы</a></nav>
+  <a class="phone" href="tel:+74950000000">+7 495 000-00-00</a>
+  <a class="btn" href="#form">Записаться</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <span class="kicker">Гнатология · лечение ВНЧС</span>
+    <h1>Челюсть щёлкает и болит? <em>Найдём причину</em> за один визит</h1>
+    <p class="lead">Диагностика височно-нижнечелюстного сустава, сплинт-терапия и выравнивание прикуса. Без боли, по плану с понятной ценой.</p>
+    <div class="cta"><a class="btn" href="#form">Записаться на диагностику</a><a class="btn ghost" href="#how">Как проходит лечение</a></div>
+    <div class="facts"><div><b>1 200+</b><span>пациентов с ВНЧС</span></div><div><b>14 лет</b><span>опыт врача</span></div><div><b>4,9 ★</b><span>отзывы на картах</span></div></div>
+  </div>
+  <div class="compare reveal" id="compare" aria-label="Сравнение: до и после лечения">
+    <div class="pane before"><span class="tag">Проблема</span>
+      <svg class="jaw" viewBox="0 0 200 120"><path d="M20 30 Q100 -10 180 30 L170 70 Q100 110 30 70Z" fill="#fff" opacity=".9"/><path d="M40 52 L160 40" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/><circle cx="35" cy="45" r="9" fill="#ef4444" opacity=".8"/></svg>
+      <h3>Щелчки, боль, головные боли</h3><ul><li>смещён прикус</li><li>зубы стираются</li><li>утром болят мышцы лица</li></ul></div>
+    <div class="pane after"><span class="tag">Решение</span>
+      <svg class="jaw" viewBox="0 0 200 120"><path d="M20 30 Q100 -10 180 30 L170 70 Q100 110 30 70Z" fill="#fff" opacity=".95"/><path d="M40 47 L160 47" stroke="#10b981" stroke-width="5" stroke-linecap="round"/><circle cx="35" cy="45" r="9" fill="#10b981" opacity=".8"/></svg>
+      <h3>Сустав на месте, боль ушла</h3><ul><li>ровный прикус</li><li>сплинт на 3–6 месяцев</li><li>контроль раз в месяц</li></ul></div>
+    <div class="handle"></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2 class="reveal">Когда нужен гнатолог</h2>
+  <p class="sub reveal">Если хотя бы один пункт про вас — стоит прийти на диагностику. Ранний старт лечения — короче и дешевле.</p>
+  <div class="cards">
+    <div class="card reveal"><div class="ic">🔊</div><h3>Щелчки при открывании рта</h3><p>Признак смещения суставного диска — со временем щелчки переходят в боль.</p></div>
+    <div class="card reveal"><div class="ic">😬</div><h3>Скрежет зубами ночью</h3><p>Бруксизм стирает эмаль и перегружает мышцы. Защитим зубы сплинтом.</p></div>
+    <div class="card reveal"><div class="ic">🤕</div><h3>Головные боли по утрам</h3><p>Часто их причина — напряжение жевательных мышц, а не давление.</p></div>
+    <div class="card reveal"><div class="ic">🦷</div><h3>Перед брекетами и имплантами</h3><p>Проверим сустав, чтобы новый прикус встал правильно и надолго.</p></div>
+    <div class="card reveal"><div class="ic">👂</div><h3>Шум и заложенность в ушах</h3><p>Сустав рядом со слуховым проходом — ЛОР «ничего не нашёл» — к нам.</p></div>
+    <div class="card reveal"><div class="ic">⏱</div><h3>Сложно широко открыть рот</h3><p>Ограничение движения челюсти лечится — без операций в 9 из 10 случаев.</p></div>
+  </div>
+</div></section>
+
+<section style="background:#f7fbfb"><div class="wrap">
+  <h2 class="reveal">Как проходит лечение</h2>
+  <p class="sub reveal">Каждый этап с понятной ценой — общий план и смету вы получаете на первом визите.</p>
+  <div class="steps">
+    <div class="step reveal"><h3>Диагностика</h3><p>Осмотр, функциональные тесты, КТ сустава, анализ прикуса.</p></div>
+    <div class="step reveal"><h3>План</h3><p>Расскажем причину, варианты и сроки. Смета — письменно.</p></div>
+    <div class="step reveal"><h3>Сплинт-терапия</h3><p>Индивидуальная капа расслабляет мышцы и ставит сустав на место.</p></div>
+    <div class="step reveal"><h3>Закрепление</h3><p>Ортодонтия или реставрация — фиксируем результат надолго.</p></div>
+  </div>
+</div></section>
+
+<section id="doctor"><div class="wrap">
+  <div class="doctor reveal">
+    <div class="photo"><img src="img/doctor.jpg" alt="Анна Сергеевна Волкова, врач-гнатолог клиники «Дента Лайн»" width="800" height="1000" loading="lazy"><span class="exp">14 лет практики</span></div>
+    <div>
+      <h3>Анна Сергеевна Волкова</h3>
+      <div class="role">Гнатолог, ортодонт · стаж 14 лет</div>
+      <p>Специализируется на лечении ВНЧС и сложных случаях прикуса. Регулярно учится у европейских школ функциональной стоматологии.</p>
+      <ul><li>Член Стоматологической ассоциации России</li><li>Более 1 200 пациентов с ВНЧС</li><li>Ведёт пациента от диагностики до результата</li></ul>
+      <p style="margin-top:20px"><a class="btn" href="#form">Записаться к врачу</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="prices" style="padding-top:0"><div class="wrap">
+  <h2 class="reveal">Цены</h2>
+  <p class="sub reveal">Стоимость финального плана зависит от сложности — назовём её после диагностики.</p>
+  <table class="prices reveal">
+    <tr><td>Консультация гнатолога с функциональными тестами</td><td>2 500 ₽</td></tr>
+    <tr><td>КТ височно-нижнечелюстного сустава</td><td>3 900 ₽</td></tr>
+    <tr><td>Индивидуальный сплинт (капа)</td><td>от 24 000 ₽</td></tr>
+    <tr><td>Коррекция сплинта, контрольный визит</td><td>1 500 ₽</td></tr>
+  </table>
+</div></section>
+
+<section id="faq" class="faq" style="padding-top:0"><div class="wrap">
+  <h2 class="reveal">Частые вопросы</h2>
+  <details class="reveal"><summary>Лечение болезненное?</summary><p>Нет. Диагностика и сплинт-терапия безболезненны, а боль в суставе уходит уже в первые недели ношения сплинта.</p></details>
+  <details class="reveal"><summary>Сколько длится лечение?</summary><p>Обычно 3–6 месяцев сплинт-терапии, затем этап закрепления. Точный срок назовём после диагностики.</p></details>
+  <details class="reveal"><summary>Можно ли в рассрочку?</summary><p>Да, рассрочка без переплаты на 6 месяцев. Оформление в клинике за 15 минут.</p></details>
+  <details class="reveal"><summary>Что взять с собой на первый приём?</summary><p>Паспорт и снимки, если они есть. Если снимков нет — сделаем КТ в клинике в тот же день.</p></details>
+</div></section>
+
+<section id="form" style="padding-top:0"><div class="wrap">
+  <div class="form-box reveal">
+    <div><h2>Запишитесь на диагностику</h2><p class="sub">Перезвоним за 15 минут в рабочее время, подберём удобное время и напомним о визите.</p>
+      <p>📍 Москва, ул. Лесная, 9 · м. Белорусская<br>🕘 Ежедневно 9:00–21:00</p></div>
+    <form id="lead" novalidate>
+      <input name="name" placeholder="Ваше имя" autocomplete="name">
+      <input name="phone" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel">
+      <select name="time"><option>Удобно утром</option><option>Удобно днём</option><option>Удобно вечером</option></select>
+      <div class="err" id="err"></div>
+      <button class="btn" type="submit">Записаться</button>
+      <div class="consent">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</div>
+      <div class="ok" id="ok">✅ Заявка принята! Администратор перезвонит в течение 15 минут.</div>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Стоматология «Дента Лайн». Лицензия Л041-01137-77/00000000</span><span>Фото: Unsplash. Имеются противопоказания. Необходима консультация специалиста.</span></div></footer>
+
+<script>
+// шторка «Проблема / Решение»: мышь и палец
+const cmp = document.getElementById('compare');
+const setPos = x => { const r = cmp.getBoundingClientRect(); const p = Math.min(95, Math.max(5, (x - r.left) / r.width * 100)); cmp.style.setProperty('--pos', p + '%'); };
+let drag = false;
+cmp.addEventListener('pointerdown', e => { drag = true; cmp.setPointerCapture(e.pointerId); setPos(e.clientX); });
+cmp.addEventListener('pointermove', e => drag && setPos(e.clientX));
+cmp.addEventListener('pointerup', () => drag = false);
+// появление блоков при прокрутке
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// маска телефона и проверка формы
+const phone = document.querySelector('[name=phone]');
+phone.addEventListener('input', () => {
+  let d = phone.value.replace(/\D/g, '').replace(/^8/, '7'); if (!d.startsWith('7')) d = '7' + d; d = d.slice(0, 11);
+  const m = d.match(/^7(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+  phone.value = '+7' + (m[1] ? ' (' + m[1] : '') + (m[1].length === 3 ? ') ' : '') + m[2] + (m[3] ? '-' + m[3] : '') + (m[4] ? '-' + m[4] : '');
+});
+document.getElementById('lead').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, err = document.getElementById('err'); let msg = '';
+  f.name.classList.toggle('bad', f.name.value.trim().length < 2);
+  f.phone.classList.toggle('bad', f.phone.value.replace(/\D/g, '').length !== 11);
+  if (f.name.classList.contains('bad')) msg = 'Укажите имя';
+  else if (f.phone.classList.contains('bad')) msg = 'Проверьте номер телефона';
+  err.textContent = msg; if (msg) return;
+  // здесь заявка уходит на сервер: fetch('/send.php', {method: 'POST', body: new FormData(f)})
+  document.getElementById('ok').style.display = 'block'; f.querySelector('button').disabled = true;
+  if (window.ym) ym(00000000, 'reachGoal', 'lead');   // цель Яндекс Метрики
+});
+</script>
+</body>
+</html>

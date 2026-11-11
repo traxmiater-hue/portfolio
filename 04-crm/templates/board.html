@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Доска{% endblock %}
+{% block content %}
+<header class="head">
+  <div><h1>Доска</h1><p class="muted">Перетащите карточку, чтобы сменить статус. Закрытые заявки — за 14 дней.</p></div>
+</header>
+<div class="board">
+  {% for k, items in cols.items() %}
+  <section class="col" data-status="{{ k }}">
+    <h3><i style="background:{{ STATUSES[k][1] }}"></i>{{ STATUSES[k][0] }}
+      <span class="muted count">{{ items|length }}</span></h3>
+    <div class="cards">
+      {% for r in items %}
+      <a class="kcard" draggable="true" data-id="{{ r.id }}" href="{{ url_for('lead', lead_id=r.id) }}">
+        <b>{{ r.name }}</b>
+        {% if r.company %}<small>{{ r.company }}</small>{% endif %}
+        <span class="meta"><span>{{ r.amount|rub if r.amount else r.source }}</span><span class="muted">{{ r.updated|d }}</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

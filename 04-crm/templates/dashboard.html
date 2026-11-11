@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Дашборд{% endblock %}
+{% block content %}
+<header class="head">
+  <div><h1>Дашборд</h1><p class="muted">Сводка по заявкам на {{ today }}</p></div>
+</header>
+
+<section class="kpis">
+  <div class="kpi"><small>Новых за месяц</small><b>{{ kpi.new_month }}</b></div>
+  <div class="kpi"><small>Активных заявок</small><b>{{ kpi.active }}</b><span class="muted">в воронке на {{ kpi.pipeline|rub }}</span></div>
+  <div class="kpi accent"><small>Выручка за месяц</small><b>{{ kpi.won_month|rub }}</b></div>
+  <div class="kpi"><small>Конверсия за 90 дней</small><b>{{ kpi.conversion }}%</b><span class="muted">успешно / закрытые</span></div>
+</section>
+
+<section class="grid2">
+  <div class="card">
+    <h2>Заявки по неделям</h2>
+    <canvas id="weekly" height="120"></canvas>
+  </div>
+  <div class="card">
+    <h2>Воронка</h2>
+    {% set maxv = (by_status.values()|max) or 1 %}
+    <div class="funnel">
+      {% for k, (label, color) in STATUSES.items() %}
+      <a href="{{ url_for('leads', status=k) }}" class="frow">
+        <span>{{ label }}</span>
+        <span class="bar"><i style="width:{{ (100 * by_status[k] / maxv)|round }}%;background:{{ color }}"></i></span>
+        <b>{{ by_status[k] }}</b>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="grid2">
+  <div class="card">
+    <h2>Источники</h2>
+    <table class="table compact">
+      <thead><tr><th>Источник</th><th class="r">Заявок</th><th class="r">Успешно</th><th class="r">Выручка</th></tr></thead>
+      <tbody>
+      {% for s in by_source %}
+        <tr><td><a href="{{ url_for('leads', source=s.source) }}">{{ s.source }}</a></td><td class="r">{{ s.n }}</td>
+            <td class="r">{{ s.won }} <span class="muted">({{ (100 * s.won / s.n)|round|int }}%)</span></td><td class="r">{{ s.money|rub }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Последние действия</h2>
+    <ul class="feed">
+      {% for e in events %}
+      <li><a href="{{ url_for('lead', lead_id=e.lead_id) }}">{{ e.lead_name }}</a> — {{ e.text }}
+          <small class="muted">{{ e.user_name or 'система' }}, {{ e.created|dt }}</small></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const W = {{ weekly|tojson }};
+if (window.Chart) new Chart(document.getElementById('weekly'), {
+  type: 'bar',
+  data: { labels: W.labels.map(l => 'с ' + l), datasets: [
+    { label: 'Все заявки', data: W.all, backgroundColor: '#c7d2fe', borderRadius: 6 },
+    { label: 'Успешные', data: W.won, backgroundColor: '#16a34a', borderRadius: 6 } ] },
+  options: { plugins: { legend: { position: 'bottom' } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true, ticks: { precision: 0 } } } }
+});
+</script>
+{% endblock %}

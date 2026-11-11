@@ -1,0 +1,8 @@
+{
+  "sources": {
+    "Хабр": "https://habr.com/ru/rss/articles/",
+    "Лента": "https://lenta.ru/rss/news",
+    "vc.ru": "https://vc.ru/rss/all"
+  },
+  "keywords": ["искусственн", "нейросет", "ИИ", "Python", "бот", "маркетплейс", "Wildberries", "Ozon", "стартап", "автоматизац", "AI", "LLM", "данных"]
+}

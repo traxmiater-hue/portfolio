@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Грузоперевозки по России и СНГ — «МагистральТранс»</title>
+<meta name="description" content="Перевозка грузов от 1 до 20 тонн по России, Казахстану и Беларуси. Расчёт стоимости за 2 минуты, страхование груза, GPS-трекинг.">
+<style>
+:root{--bg:#0b1220;--panel:#111a2e;--line:#1e2a44;--text:#e8edf7;--muted:#8b98b5;--acc:#f59e0b;--acc2:#fbbf24}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:9;background:rgba(11,18,32,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:70px;gap:26px}
+.logo{font-weight:900;font-size:20px;letter-spacing:.02em}.logo b{color:var(--acc)}
+.nav nav{margin-left:auto;display:flex;gap:22px;font-size:15px}.nav nav a{color:var(--muted);text-decoration:none}
+.btn{display:inline-block;background:var(--acc);color:#111;font-weight:800;padding:14px 24px;border-radius:12px;text-decoration:none;border:0;font:inherit;font-weight:800;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--acc2);transform:translateY(-1px)}
+.btn.line{background:transparent;color:var(--text);border:1px solid #334366}
+.hero{padding:64px 0 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#1f2937;border:1px solid #374151;border-radius:999px;padding:6px 14px;font-size:14px;color:var(--acc2)}
+h1{font-size:54px;line-height:1.04;letter-spacing:-.02em;margin:18px 0}
+h1 span{color:var(--acc)}
+.lead{color:var(--muted);font-size:19px;max-width:520px}
+.hero .cta{display:flex;gap:12px;margin:28px 0}
+.stats{display:flex;gap:34px}.stats b{font-size:28px;display:block}.stats span{color:var(--muted);font-size:14px}
+.map{position:relative;background:radial-gradient(circle at 30% 40%,#16233f,#0e1629);border:1px solid var(--line);border-radius:28px;aspect-ratio:1.2/1;overflow:hidden}
+.map svg{width:100%;height:100%}
+.route{fill:none;stroke:var(--acc);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 3.2s ease forwards}
+.route.r2{stroke:#38bdf8;animation-delay:.8s}.route.r3{stroke:#a78bfa;animation-delay:1.4s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.city circle{fill:#fff}.city text{fill:#cbd5e1;font-size:13px;font-weight:600}
+.truck{filter:drop-shadow(0 4px 6px rgba(0,0,0,.5))}
+.live{position:absolute;left:20px;bottom:20px;background:rgba(17,26,46,.92);border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-size:14px;width:260px}
+.live b{color:var(--acc2)}
+.bar{height:6px;background:#1f2b47;border-radius:6px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;width:64%;background:var(--acc)}
+section{padding:80px 0}
+h2{font-size:38px;letter-spacing:-.02em;margin-bottom:12px}
+.sub{color:var(--muted);font-size:18px;margin-bottom:36px;max-width:640px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:26px;transition:.25s}
+.tile:hover{border-color:#4b5b82;transform:translateY(-3px)}
+.tile .ic{font-size:30px}.tile h3{margin:12px 0 6px}.tile p{color:var(--muted);font-size:15px}
+.tile .price{margin-top:14px;font-weight:800;color:var(--acc2)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.steps div{border-top:3px solid var(--acc);padding-top:14px}.steps b{font-size:13px;color:var(--acc2)}.steps p{font-size:15px;margin-top:4px}
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;background:linear-gradient(135deg,#111a2e,#0f1a33);border:1px solid var(--line);border-radius:30px;padding:36px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-size:13px;color:var(--muted);display:grid;gap:6px}
+input,select{font:inherit;background:#0b1325;border:1px solid #26365a;color:var(--text);border-radius:12px;padding:13px 14px;outline:none}
+input:focus,select:focus{border-color:var(--acc)}
+.full{grid-column:1/-1}
+.result{background:#0b1325;border:1px dashed #3b4d78;border-radius:22px;padding:26px;display:flex;flex-direction:column;justify-content:center}
+.result .sum{font-size:44px;font-weight:900;color:var(--acc2);margin:8px 0}
+.result small{color:var(--muted)}
+.ok{display:none;margin-top:14px;background:#14321f;color:#86efac;padding:14px;border-radius:12px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:18px}
+.faq p{color:var(--muted);margin-top:8px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.in{opacity:1;transform:none}
+@media(max-width:560px){.logo{font-size:17px}.nav .btn{padding:10px 14px;font-size:14px}.stats{gap:20px}.stats b{font-size:22px}.live{left:12px;right:12px;bottom:12px;width:auto}}
+@media(max-width:900px){.hero .wrap,.calc{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}h1{font-size:38px}.nav nav{display:none}form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="logo">МАГИСТРАЛЬ<b>ТРАНС</b></div>
+<nav><a href="#services">Услуги</a><a href="#how">Этапы</a><a href="#calc">Расчёт</a><a href="#faq">FAQ</a></nav>
+<a class="btn" href="#calc">Рассчитать</a></div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <span class="badge">● 38 машин сейчас в рейсе</span>
+    <h1>Грузоперевозки по России и СНГ <span>точно в срок</span></h1>
+    <p class="lead">Доставим от 1 до 20 тонн по 1 400+ городам. Фиксированная цена в договоре, страховка груза и GPS-трекинг 24/7.</p>
+    <div class="cta"><a class="btn" href="#calc">Рассчитать стоимость</a><a class="btn line" href="#services">Наши услуги</a></div>
+    <div class="stats"><div><b>12 лет</b><span>на рынке</span></div><div><b>96%</b><span>доставок в срок</span></div><div><b>120</b><span>машин в парке</span></div></div>
+  </div>
+  <div class="map reveal">
+    <svg viewBox="0 0 800 520">
+      <g opacity=".18" stroke="#5a6b94">
+        <path d="M0 100H800M0 200H800M0 300H800M0 400H800M100 0V520M250 0V520M400 0V520M550 0V520M700 0V520"/>
+      </g>
+      <path class="route" d="M90 300 C 200 250, 300 210, 420 200 S 600 150, 700 120"/>
+      <path class="route r2" d="M90 300 C 180 360, 300 400, 470 390"/>
+      <path class="route r3" d="M420 200 C 470 260, 560 300, 640 330"/>
+      <g class="city"><circle cx="90" cy="300" r="7"/><text x="62" y="328">Москва</text></g>
+      <g class="city"><circle cx="420" cy="200" r="6"/><text x="396" y="186">Казань</text></g>
+      <g class="city"><circle cx="700" cy="120" r="6"/><text x="660" y="104">Екатеринбург</text></g>
+      <g class="city"><circle cx="470" cy="390" r="6"/><text x="440" y="416">Ростов-на-Дону</text></g>
+      <g class="city"><circle cx="640" cy="330" r="6"/><text x="610" y="356">Астана</text></g>
+      <g class="truck" opacity="0">
+        <!-- фура кабиной вперёд (вправо); rotate="auto" поворачивает её по изгибам маршрута -->
+        <g transform="translate(-23,-21)">
+          <rect x="0" y="3" width="29" height="15" rx="2" fill="#f59e0b"/>
+          <rect x="3" y="6" width="23" height="2" rx="1" fill="#fcd34d" opacity=".7"/>
+          <path d="M30 7h8l6 6v5H30z" fill="#fbbf24"/>
+          <path d="M32 9h5l4 4h-9z" fill="#0e1629"/>
+          <rect x="42" y="15" width="3" height="2" fill="#fef3c7"/>
+          <circle cx="7" cy="19" r="3.3" fill="#0b1325" stroke="#cbd5e1" stroke-width="1.6"/>
+          <circle cx="21" cy="19" r="3.3" fill="#0b1325" stroke="#cbd5e1" stroke-width="1.6"/>
+          <circle cx="37" cy="19" r="3.3" fill="#0b1325" stroke="#cbd5e1" stroke-width="1.6"/>
+        </g>
+        <animateMotion dur="6s" begin="1s" repeatCount="indefinite" rotate="auto" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines=".45 0 .55 1" path="M90 300 C 200 250, 300 210, 420 200 S 600 150, 700 120"/>
+        <animate attributeName="opacity" dur="6s" begin="1s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.08;.9;1"/>
+      </g>
+    </svg>
+    <div class="live">Рейс № 4127 · Москва → Екатеринбург<br><b>В пути: осталось 640 км</b><div class="bar"><i></i></div></div>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <h2 class="reveal">Что перевозим</h2><p class="sub reveal">Подберём машину под груз: от «Газели» до фуры 20 т с рефрижератором.</p>
+  <div class="grid3">
+    <div class="tile reveal"><div class="ic">🚛</div><h3>Фура 20 т</h3><p>Полная загрузка 82–92 м³. Межгород и экспорт в Казахстан и Беларусь.</p><div class="price">от 38 ₽/км</div></div>
+    <div class="tile reveal"><div class="ic">📦</div><h3>Сборный груз</h3><p>Платите только за свои паллеты. Отправки 3 раза в неделю.</p><div class="price">от 1 900 ₽/паллета</div></div>
+    <div class="tile reveal"><div class="ic">❄️</div><h3>Рефрижератор</h3><p>От −20 до +20 °C, термописец в каждом рейсе. Продукты и фарма.</p><div class="price">от 45 ₽/км</div></div>
+    <div class="tile reveal"><div class="ic">🏗</div><h3>Негабарит</h3><p>Спецтехника и оборудование: тралы, разрешения, сопровождение.</p><div class="price">по расчёту</div></div>
+    <div class="tile reveal"><div class="ic">🛡</div><h3>Страхование</h3><p>Страхуем груз на полную стоимость — 0,1% от оценки.</p><div class="price">от 500 ₽</div></div>
+    <div class="tile reveal"><div class="ic">📍</div><h3>GPS-трекинг</h3><p>Ссылка на карту с машиной и уведомления в Telegram на каждом этапе.</p><div class="price">бесплатно</div></div>
+  </div>
+</div></section>
+
+<section id="how" style="padding-top:0"><div class="wrap">
+  <h2 class="reveal">Как мы работаем</h2><p class="sub reveal">От заявки до подписанных документов — один менеджер на связи.</p>
+  <div class="steps reveal">
+    <div><b>01</b><p>Заявка и расчёт за 15 минут</p></div><div><b>02</b><p>Договор с фиксированной ценой</p></div>
+    <div><b>03</b><p>Подача машины в течение 24 ч</p></div><div><b>04</b><p>Трекинг и уведомления в пути</p></div><div><b>05</b><p>Доставка и закрывающие документы</p></div>
+  </div>
+</div></section>
+
+<section id="calc" style="padding-top:0"><div class="wrap">
+  <div class="calc reveal">
+    <div><h2>Расчёт стоимости</h2><p class="sub">Предварительная цена считается сразу, точную менеджер подтвердит за 15 минут.</p>
+      <form id="f" novalidate>
+        <label>Откуда<input name="from" value="Москва" required></label>
+        <label>Куда<input name="to" value="Екатеринбург" required></label>
+        <label>Расстояние, км<input name="km" type="number" value="1790" min="10"></label>
+        <label>Вес, т<input name="t" type="number" value="5" min="0.1" step="0.1"></label>
+        <label>Тип перевозки<select name="type"><option value="1">Отдельная машина</option><option value=".55">Сборный груз</option><option value="1.2">Рефрижератор</option></select></label>
+        <label>Телефон<input name="phone" placeholder="+7 900 000-00-00"></label>
+        <button class="btn full" type="submit">Получить точный расчёт</button>
+        <div class="ok full" id="ok">✅ Заявка принята — менеджер позвонит в течение 15 минут.</div>
+      </form></div>
+    <div class="result"><small>Предварительно</small><div class="sum" id="sum">—</div><small id="det"></small></div>
+  </div>
+</div></section>
+
+<section id="faq" class="faq" style="padding-top:0"><div class="wrap">
+  <h2 class="reveal">Вопросы</h2>
+  <details class="reveal"><summary>Работаете с НДС?</summary><p>Да, работаем с НДС и без — выбирайте удобный вариант при заключении договора.</p></details>
+  <details class="reveal"><summary>Как быстро подадите машину?</summary><p>В Москве и области — в течение 24 часов, в регионах — от 1 до 2 дней.</p></details>
+  <details class="reveal"><summary>Что если груз повредят?</summary><p>Возместим по страховке в течение 10 рабочих дней после оформления акта.</p></details>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 ООО «МагистральТранс» · ИНН 7700000000</span><span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a></span></div></footer>
+
+<script>
+const f = document.getElementById('f');
+const money = n => n.toLocaleString('ru-RU') + ' ₽';
+function calc() {
+  const km = +f.km.value || 0, t = +f.t.value || 0, k = +f.type.value;
+  const perKm = t <= 1.5 ? 28 : t <= 5 ? 34 : t <= 10 ? 38 : 44;
+  const total = Math.max(6000, Math.round(km * perKm * k / 100) * 100);
+  document.getElementById('sum').textContent = money(total);
+  document.getElementById('det').textContent = `${f.from.value} → ${f.to.value}, ${km} км, ${t} т · ≈ ${Math.ceil(km / 600)} дн. в пути`;
+}
+f.addEventListener('input', calc); calc();
+f.addEventListener('submit', e => {
+  e.preventDefault();
+  if (f.phone.value.replace(/\D/g, '').length < 11) { f.phone.focus(); f.phone.style.borderColor = '#f87171'; return; }
+  // отправка на сервер: fetch('send.php', {method: 'POST', body: new FormData(f)}) — письмо менеджеру
+  document.getElementById('ok').style.display = 'block';
+});
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

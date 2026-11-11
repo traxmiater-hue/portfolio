@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}CRM{% endblock %} · Заявки</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta name="csrf" content="{{ csrf }}">
+</head>
+<body>
+{% if user %}
+<div class="layout">
+  <aside class="side">
+    <a class="brand" href="{{ url_for('dashboard') }}"><span>◆</span> Поток CRM</a>
+    <nav>
+      <a href="{{ url_for('dashboard') }}" class="{{ 'on' if request.endpoint == 'dashboard' }}">
+        <svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zm0 7h6v-5H4zm10 0h6v-9h-6zm0-16v5h6V4z"/></svg>Дашборд</a>
+      <a href="{{ url_for('leads') }}" class="{{ 'on' if request.endpoint in ('leads', 'lead') }}">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>Заявки</a>
+      <a href="{{ url_for('board') }}" class="{{ 'on' if request.endpoint == 'board' }}">
+        <svg viewBox="0 0 24 24"><path d="M3 4h5v16H3zm6.5 0h5v10h-5zM16 4h5v13h-5z"/></svg>Доска</a>
+    </nav>
+    <a class="btn primary new" href="{{ url_for('lead_new') }}">+ Новая заявка</a>
+    <div class="me">
+      <div class="ava">{{ user.name[:1] }}</div>
+      <div><b>{{ user.name }}</b><small>{{ 'руководитель' if user.role == 'admin' else 'менеджер' }}</small></div>
+      <form method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <button class="icon" title="Выйти" aria-label="Выйти">⎋</button>
+      </form>
+    </div>
+  </aside>
+  <main class="main">
+    {% for cat, msg in get_flashed_messages(with_categories=true) %}
+      <div class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% else %}
+  {% block bare %}{% endblock %}
+{% endif %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

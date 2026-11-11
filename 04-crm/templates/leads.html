@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Заявки{% endblock %}
+{% block content %}
+<header class="head">
+  <div><h1>Заявки</h1><p class="muted">Найдено: {{ total }}</p></div>
+  <a class="btn" href="{{ url_for('export_csv', **args) }}">⬇ Выгрузить CSV</a>
+</header>
+
+<form class="filters card" method="get">
+  <input type="search" name="q" value="{{ args.q }}" placeholder="Имя, телефон, компания, комментарий…">
+  <select name="status"><option value="">Все статусы</option>
+    {% for k, (label, _) in STATUSES.items() %}<option value="{{ k }}" {{ 'selected' if args.status == k }}>{{ label }}</option>{% endfor %}</select>
+  <select name="source"><option value="">Все источники</option>
+    {% for s in SOURCES %}<option {{ 'selected' if args.source == s }}>{{ s }}</option>{% endfor %}</select>
+  <select name="manager"><option value="">Все менеджеры</option><option value="none" {{ 'selected' if args.manager == 'none' }}>Без менеджера</option>
+    {% for m in managers %}<option value="{{ m.id }}" {{ 'selected' if args.manager == m.id|string }}>{{ m.name }}</option>{% endfor %}</select>
+  <select name="sort">
+    {% for k, label in [('new','Сначала новые'),('old','Сначала старые'),('updated','По активности'),('amount','По сумме')] %}
+    <option value="{{ k }}" {{ 'selected' if sort == k }}>{{ label }}</option>{% endfor %}</select>
+  <button class="btn primary">Применить</button>
+  {% if args %}<a class="btn ghost" href="{{ url_for('leads') }}">Сбросить</a>{% endif %}
+</form>
+
+<div class="card flush">
+  <table class="table">
+    <thead><tr><th>№</th><th>Клиент</th><th>Источник</th><th>Статус</th><th class="r">Сумма</th><th>Менеджер</th><th>Создана</th></tr></thead>
+    <tbody>
+    {% for r in rows %}
+      <tr class="click" data-href="{{ url_for('lead', lead_id=r.id) }}">
+        <td class="muted">{{ r.id }}</td>
+        <td><a href="{{ url_for('lead', lead_id=r.id) }}"><b>{{ r.name }}</b></a><small class="muted block">{{ r.company or r.phone }}</small></td>
+        <td>{{ r.source }}</td>
+        <td><span class="pill" style="--c:{{ STATUSES[r.status][1] }}">{{ STATUSES[r.status][0] }}</span></td>
+        <td class="r">{{ r.amount|rub if r.amount else '—' }}</td>
+        <td>{{ r.manager or '—' }}</td>
+        <td class="muted">{{ r.created|dt }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="7" class="empty">Ничего не найдено. Попробуйте изменить фильтры.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if pages > 1 %}
+<nav class="pager">
+  {% if page > 1 %}<a class="btn ghost" href="{{ url_for('leads', page=page-1, **args) }}">← Назад</a>{% endif %}
+  <span class="muted">Страница {{ page }} из {{ pages }}</span>
+  {% if page < pages %}<a class="btn ghost" href="{{ url_for('leads', page=page+1, **args) }}">Вперёд →</a>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}

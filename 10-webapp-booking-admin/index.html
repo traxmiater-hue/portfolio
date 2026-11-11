@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Журнал записи — панель администратора салона</title>
+<style>
+:root{--bg:#fbfaf8;--line:#ebe7e0;--ink:#2b2622;--muted:#8a8178;--acc:#c0841a;--hour:72px}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{display:flex;align-items:center;gap:16px;padding:16px 26px;border-bottom:1px solid var(--line);background:#fff;flex-wrap:wrap}
+header h1{font-size:20px;margin-right:auto}header h1 small{color:var(--muted);font-weight:400;font-size:14px;margin-left:8px}
+.days{display:flex;gap:6px}
+.days button{font:inherit;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;cursor:pointer;min-width:58px;line-height:1.2}
+.days button small{display:block;color:var(--muted);font-size:11px}
+.days button.on{background:var(--ink);color:#fff;border-color:var(--ink)}.days button.on small{color:#cfc7bd}
+.new{background:var(--acc);color:#fff;border:0;border-radius:12px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:18px 26px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.kpi b{font-size:24px;display:block}.kpi span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:64px repeat(4,1fr);margin:0 26px 26px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.head{padding:14px;border-bottom:1px solid var(--line);font-weight:700;display:flex;gap:10px;align-items:center}
+.head i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-style:normal;font-size:13px}
+.head small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.times div{height:var(--hour);border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);padding:4px 8px;text-align:right}
+.lane{position:relative;border-left:1px solid var(--line);background:repeating-linear-gradient(#fff 0 calc(var(--hour) - 1px),var(--line) calc(var(--hour) - 1px) var(--hour))}
+.slot{position:absolute;left:6px;right:6px;border-radius:12px;padding:8px 10px;font-size:13px;overflow:hidden;cursor:pointer;border-left:4px solid;transition:.15s}
+.slot:hover{transform:scale(1.015);box-shadow:0 8px 20px -10px rgba(0,0,0,.3)}
+.slot b{display:block;font-size:14px}.slot span{color:#6b625a}
+.slot.paid::after{content:"оплачено";position:absolute;right:8px;top:8px;font-size:10px;font-weight:700;color:#15803d;background:#dcfce7;padding:2px 6px;border-radius:999px}
+.now{position:absolute;left:0;right:0;height:2px;background:#ef4444;z-index:2}.now::before{content:"";position:absolute;left:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:#ef4444}
+dialog{border:0;border-radius:20px;padding:24px;width:380px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+dialog form{display:grid;gap:10px}dialog input,dialog select{font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}
+.err{color:#dc2626;font-size:13px;min-height:18px}
+@media(max-width:900px){.kpi{grid-template-columns:1fr 1fr}.grid{grid-template-columns:52px repeat(4,minmax(160px,1fr));overflow-x:auto}}
+</style>
+</head>
+<body>
+<header><h1>Салон «Лён» <small>журнал записи</small></h1><div class="days" id="days"></div><button class="new" id="newBtn">+ Запись</button></header>
+<div class="kpi" id="kpi"></div>
+<div class="grid" id="grid"></div>
+<dialog id="dlg"><form method="dialog" id="f"><b>Новая запись</b>
+  <input name="client" placeholder="Имя клиента" required><input name="phone" placeholder="Телефон">
+  <select name="master"></select><select name="service"></select>
+  <input name="start" type="time" value="12:00" step="900"><div class="err" id="err"></div>
+  <button class="new" value="ok">Записать</button></form></dialog>
+<script>
+const START = 9, END = 21;
+const MASTERS = [{n:'Ирина',r:'стилист',c:'#c0841a'},{n:'Олег',r:'барбер',c:'#2563eb'},{n:'Вика',r:'маникюр',c:'#db2777'},{n:'Даша',r:'брови и ресницы',c:'#059669'}];
+const SERVICES = {'Стрижка женская':[60,2500],'Окрашивание':[150,6500],'Мужская стрижка':[45,1500],'Борода':[30,900],'Маникюр с покрытием':[90,2200],'Брови':[45,1300],'Ламинирование ресниц':[60,2400]};
+const DAYS = ['пн 9','вт 10','ср 11','чт 12','пт 13','сб 14'];
+let day = 0;
+let books = JSON.parse(localStorage.getItem('books') || 'null') || [
+ [0,0,'09:30','Стрижка женская','Анна К.',1],[0,0,'11:00','Окрашивание','Мария С.',0],[0,0,'15:00','Стрижка женская','Елена',0],
+ [0,1,'10:00','Мужская стрижка','Павел',1],[0,1,'10:45','Борода','Павел',1],[0,1,'13:00','Мужская стрижка','Игорь',0],[0,1,'17:30','Мужская стрижка','Сергей',0],
+ [0,2,'09:00','Маникюр с покрытием','Ольга',1],[0,2,'12:30','Маникюр с покрытием','Дарья',0],[0,2,'16:00','Маникюр с покрытием','Ксения',0],
+ [0,3,'11:00','Брови','Алёна',1],[0,3,'14:00','Ламинирование ресниц','Света',0],[0,3,'18:00','Брови','Яна',0],
+ [1,0,'10:00','Окрашивание','Инна',0],[1,1,'12:00','Мужская стрижка','Антон',0]
+].map(([d,m,t,s,c,p]) => ({d,m,t,s,c,p}));
+const mins = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+const px = t => (mins(t) - START * 60) / 60 * 72;
+const save = () => localStorage.setItem('books', JSON.stringify(books));
+function render() {
+  document.getElementById('days').innerHTML = DAYS.map((x, i) => { const [w, n] = x.split(' '); return `<button class="${i === day ? 'on' : ''}" data-d="${i}">${n}<small>${w}</small></button>`; }).join('');
+  const today = books.filter(b => b.d === day);
+  const sum = today.reduce((a, b) => a + SERVICES[b.s][1], 0), busy = today.reduce((a, b) => a + SERVICES[b.s][0], 0);
+  document.getElementById('kpi').innerHTML = `<div><b>${today.length}</b><span>записей за день</span></div><div><b>${sum.toLocaleString('ru-RU')} ₽</b><span>выручка по записям</span></div>
+    <div><b>${Math.round(busy / (MASTERS.length * (END - START) * 60) * 100)}%</b><span>загрузка мастеров</span></div><div><b>${today.filter(b => b.p).length}</b><span>оплачено онлайн</span></div>`;
+  let html = '<div></div>' + MASTERS.map(m => `<div class="head"><i style="background:${m.c}">${m.n[0]}</i><div>${m.n}<small>${m.r}</small></div></div>`).join('');
+  html += '<div class="times">' + Array.from({length: END - START}, (_, i) => `<div>${START + i}:00</div>`).join('') + '</div>';
+  MASTERS.forEach((m, mi) => {
+    html += `<div class="lane" style="height:${(END - START) * 72}px">` + today.filter(b => b.m === mi).map(b => {
+      const [len, price] = SERVICES[b.s];
+      return `<div class="slot ${b.p ? 'paid' : ''}" style="top:${px(b.t)}px;height:${len / 60 * 72 - 4}px;background:${m.c}14;border-color:${m.c}">
+        <b>${b.t} ${b.c}</b><span>${b.s} · ${price.toLocaleString('ru-RU')} ₽</span></div>`;
+    }).join('') + (day === 0 ? `<div class="now" style="top:${px('13:40')}px"></div>` : '') + '</div>';
+  });
+  document.getElementById('grid').innerHTML = html;
+}
+document.getElementById('days').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { day = +b.dataset.d; render(); } });
+const dlg = document.getElementById('dlg'), f = document.getElementById('f');
+f.master.innerHTML = MASTERS.map((m, i) => `<option value="${i}">${m.n} — ${m.r}</option>`).join('');
+f.service.innerHTML = Object.entries(SERVICES).map(([s, [l, p]]) => `<option>${s}</option>`).join('');
+document.getElementById('newBtn').onclick = () => { f.reset(); document.getElementById('err').textContent = ''; dlg.showModal(); };
+f.addEventListener('submit', e => {
+  const m = +f.master.value, s = f.service.value, st = mins(f.start.value), en = st + SERVICES[s][0];
+  const clash = books.some(b => b.d === day && b.m === m && st < mins(b.t) + SERVICES[b.s][0] && mins(b.t) < en);
+  const msg = !f.client.value.trim() ? 'Укажите клиента' : st < START * 60 || en > END * 60 ? 'Вне рабочего времени' : clash ? 'У мастера уже есть запись на это время' : '';
+  if (msg) { e.preventDefault(); document.getElementById('err').textContent = msg; return; }
+  books.push({d: day, m, t: f.start.value, s, c: f.client.value.trim(), p: 0}); save(); render();
+});
+render();
+</script>
+</body>
+</html>

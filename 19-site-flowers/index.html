@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лепесток — цветы с доставкой по Химкам за 2 часа</title>
+<meta name="description" content="Цветочная мастерская в Химках: авторские букеты, пионы, розы, тюльпаны, цветы в коробке. Доставка за 2 часа, фото букета перед отправкой.">
+<style>
+:root{--bg:#fbf7f3;--paper:#fff;--ink:#2a2420;--muted:#857a72;--line:#ece3db;--rose:#c8556b;--rose2:#e07a8e;--leaf:#5d7a5a;--cream:#f4ebe2}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+img{display:block;max-width:100%}
+a{color:inherit}
+.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.01em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:600;
+ padding:14px 24px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--rose)}
+.btn.light{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.light:hover{background:var(--ink);color:#fff}
+.bar{background:var(--leaf);color:#fff;text-align:center;font-size:14px;padding:8px 12px}
+header{position:sticky;top:0;z-index:20;background:rgba(251,247,243,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:28px;height:70px}
+.logo{font-size:28px;text-decoration:none;display:flex;align-items:baseline;gap:6px}
+.logo small{font-family:"Segoe UI",sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.nav nav{display:flex;gap:24px;margin-left:auto;font-size:15px}
+.nav nav a{text-decoration:none;color:#5a504a}.nav nav a:hover{color:var(--rose)}
+.cart-btn{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer}
+.cart-btn span{position:absolute;top:-6px;right:-6px;background:var(--rose);color:#fff;font-size:12px;min-width:22px;height:22px;border-radius:11px;display:grid;place-items:center}
+/* первый экран */
+.hero{padding:56px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);font-weight:700}
+h1{font-size:clamp(40px,5.4vw,70px);line-height:1.02;margin:16px 0 20px}
+h1 em{font-style:italic;color:var(--rose)}
+.lead{font-size:19px;color:#6b605a;max-width:500px}
+.hero .cta{display:flex;gap:12px;margin:30px 0;flex-wrap:wrap}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:520px}
+.perks div{font-size:14px;color:var(--muted)}.perks b{display:block;color:var(--ink);font-size:17px}
+.collage{position:relative;height:600px}
+.collage img{position:absolute;object-fit:cover;border-radius:220px 220px 24px 24px;box-shadow:0 30px 60px -30px rgba(80,40,30,.45)}
+.collage .a{right:0;top:0;width:68%;height:88%}
+.collage .b{left:0;bottom:0;width:44%;height:52%;border-radius:24px;border:8px solid var(--bg)}
+.collage .note{position:absolute;left:6%;top:12%;background:var(--paper);border-radius:18px;padding:14px 16px;font-size:14px;box-shadow:0 16px 40px -20px rgba(0,0,0,.3);max-width:200px}
+.collage .note b{display:block;font-size:22px;color:var(--rose)}
+/* каталог */
+section{padding:80px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+h2{font-size:clamp(32px,3.6vw,48px);line-height:1.08}
+.sub{color:var(--muted);max-width:460px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{font:inherit;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;color:#5a504a}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:var(--paper);border-radius:22px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(80,40,30,.4)}
+.card .ph{position:relative;aspect-ratio:4/5;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.card:hover .ph img{transform:scale(1.04)}
+.card .lbl{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.92);font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;color:var(--rose)}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:17px;font-weight:600}.card p{font-size:14px;color:var(--muted);flex:1}
+.sizes{display:flex;gap:6px}
+.sizes button{font:inherit;font-size:13px;flex:1;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 0;cursor:pointer}
+.sizes button.on{border-color:var(--ink);background:var(--paper);font-weight:700}
+.buy{display:flex;justify-content:space-between;align-items:center}
+.buy b{font-size:19px}
+.buy button{font:inherit;font-weight:600;border:0;background:var(--rose);color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer}
+.buy button:hover{background:var(--ink)}
+/* поводы */
+.occasions{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.occ{position:relative;border-radius:22px;overflow:hidden;height:260px;cursor:pointer;color:#fff}
+.occ img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.5s}
+.occ:hover img{transform:scale(1.05)}
+.occ::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(30,20,15,.7),rgba(30,20,15,0) 60%)}
+.occ div{position:absolute;left:18px;bottom:16px;z-index:1}.occ b{font-size:22px;display:block}.occ small{opacity:.85}
+/* о нас */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about img{border-radius:28px;height:520px;width:100%;object-fit:cover}
+.about ul{list-style:none;padding:0;margin:22px 0;display:grid;gap:14px}
+.about li{display:flex;gap:14px;align-items:flex-start}
+.about li i{font-style:normal;width:38px;height:38px;flex:none;border-radius:12px;background:var(--cream);display:grid;place-items:center}
+.about li b{display:block}.about li span{color:var(--muted);font-size:15px}
+/* отзывы */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rv{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px}
+.rv .stars{color:#e3a33b;letter-spacing:2px}
+.rv p{margin:10px 0 14px;color:#4b423c}.rv footer{font-size:14px;color:var(--muted)}
+/* доставка */
+.delivery{background:var(--cream);border-radius:32px;padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.delivery h3{font-size:22px;margin-bottom:8px}.delivery p{color:#6b605a;font-size:15px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-size:19px;list-style:none;display:flex;justify-content:space-between}
+.faq summary::after{content:"+";color:var(--rose);font-size:24px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:#6b605a;margin-top:8px;max-width:760px}
+footer.site{background:var(--ink);color:#d9cfc6;padding:46px 0;margin-top:40px}
+footer.site .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer.site small{color:#9b8f86}
+/* корзина */
+.overlay{position:fixed;inset:0;background:rgba(30,20,15,.45);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:41;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.open .overlay{opacity:1;pointer-events:auto}.open .drawer{transform:none}
+.drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:none}
+.drawer .x{background:none;border:0;font-size:28px;cursor:pointer;line-height:1}
+.items{flex:1;overflow:auto;padding:0 22px;display:grid;gap:12px;align-content:start}
+.item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px}
+.item img{width:64px;height:64px;object-fit:cover;border-radius:12px}
+.item small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;font:inherit}
+.checkout{padding:18px 22px;border-top:1px solid var(--line);display:grid;gap:10px;background:var(--paper)}
+.checkout input,.checkout select,.checkout textarea{font:inherit;width:100%;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 13px;outline:none}
+.checkout input:focus,.checkout select:focus,.checkout textarea:focus{border-color:var(--rose)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total{display:flex;justify-content:space-between;font-size:18px}
+.dlv{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}.dlv b{font-weight:600}
+.checkout .bad{border-color:#c8556b!important;background:#fff5f6}
+.err{color:#c8556b;font-size:14px;min-height:0}
+.done{padding:30px 22px;text-align:center;display:grid;gap:12px;justify-items:center}
+.done .ok{width:64px;height:64px;border-radius:50%;background:#e8f3ec;color:#3f7d58;display:grid;place-items:center;font-size:30px}
+.done ul{list-style:none;padding:0;color:var(--muted);font-size:15px}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;z-index:50;transition:.3s;font-size:15px;opacity:0;visibility:hidden}
+.toast.show{transform:translate(-50%,0);opacity:1;visibility:visible}
+.reveal{opacity:0;transform:translateY(20px);transition:.8s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:none}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.occasions{grid-template-columns:repeat(2,1fr)}
+ .hero .wrap,.about{grid-template-columns:1fr}.collage{height:460px}.nav nav{display:none}.delivery,.reviews{grid-template-columns:1fr}
+ footer.site .wrap{grid-template-columns:1fr}}
+@media (max-width:560px){.logo small{display:none}.grid{grid-template-columns:1fr 1fr;gap:12px}.card .body{padding:12px}.card p{display:none}.sizes button{font-size:12px}
+ .buy{flex-direction:column;align-items:stretch;gap:8px}.buy button{width:100%}.perks{grid-template-columns:1fr 1fr 1fr}
+ section{padding:56px 0}.delivery{padding:26px}.collage{height:380px}.about img{height:360px}}
+</style>
+</head>
+<body>
+<div class="bar">Доставка по Химкам за 2 часа · пришлём фото букета перед отправкой</div>
+<header><div class="wrap nav">
+  <a class="logo serif" href="#">Лепесток <small>цветочная мастерская</small></a>
+  <nav><a href="#catalog">Каталог</a><a href="#occasions">Поводы</a><a href="#about">О нас</a><a href="#delivery">Доставка</a></nav>
+  <button class="cart-btn" id="cartBtn">Корзина <span id="cnt">0</span></button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <div class="eyebrow">Химки · с 2016 года</div>
+    <h1 class="serif">Букеты, которые <em>хочется</em> сфотографировать</h1>
+    <p class="lead">Собираем из свежих цветов в день заказа. Перед отправкой присылаем фото букета — если что-то не так, переделаем.</p>
+    <div class="cta"><a class="btn" href="#catalog">Выбрать букет</a><a class="btn light" href="#occasions">Подобрать по поводу</a></div>
+    <div class="perks"><div><b>2 часа</b>доставка по городу</div><div><b>от 2 900 ₽</b>авторские букеты</div><div><b>4,9 ★</b>380 отзывов</div></div>
+  </div>
+  <div class="collage reveal">
+    <img class="a" src="img/hero.jpg" alt="Цветочная мастерская">
+    <img class="b" src="img/rose-white.jpg" alt="Букет роз">
+    <div class="note"><b>−10%</b>на первый заказ с сайта по промокоду ЛЕПЕСТОК</div>
+  </div>
+</div></section>
+
+<section id="catalog" style="padding-top:30px"><div class="wrap">
+  <div class="head reveal"><h2 class="serif">Каталог</h2><p class="sub">Цена указана за букет выбранного размера. Состав может немного меняться в зависимости от свежих поставок.</p></div>
+  <div class="filters reveal" id="flt"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="occasions" style="padding-top:0"><div class="wrap">
+  <div class="head reveal"><h2 class="serif">Подобрать по поводу</h2></div>
+  <div class="occasions">
+    <div class="occ reveal" data-f="Сборные"><img src="img/sunflowers.jpg" alt="" loading="lazy"><div><b>День рождения</b><small>яркие сборные букеты</small></div></div>
+    <div class="occ reveal" data-f="Пионы"><img src="img/peonies.jpg" alt="" loading="lazy"><div><b>Любимой</b><small>пионы и пионовидные розы</small></div></div>
+    <div class="occ reveal" data-f="Розы"><img src="img/beige.jpg" alt="" loading="lazy"><div><b>Свадьба</b><small>нежные букеты невесты</small></div></div>
+    <div class="occ reveal" data-f="В коробке"><img src="img/box.jpg" alt="" loading="lazy"><div><b>Без повода</b><small>цветы в коробке</small></div></div>
+  </div>
+</div></section>
+
+<section id="about" style="padding-top:0"><div class="wrap about">
+  <img class="reveal" src="img/florist.jpg" alt="Флорист собирает букет" loading="lazy">
+  <div class="reveal">
+    <div class="eyebrow">О мастерской</div>
+    <h2 class="serif" style="margin-top:10px">Маленькая мастерская, где каждый букет собирают руками</h2>
+    <ul>
+      <li><i>🌷</i><div><b>Поставки три раза в неделю</b><span>Голландия, Эквадор и местные теплицы — ничего не стоит на витрине неделями.</span></div></li>
+      <li><i>📷</i><div><b>Фото перед отправкой</b><span>Вы видите свой букет до того, как курьер выйдет из мастерской.</span></div></li>
+      <li><i>💧</i><div><b>Стоят дольше</b><span>Даём пакетик подкормки и памятку по уходу — букет простоит 7–10 дней.</span></div></li>
+    </ul>
+    <a class="btn" href="#catalog">Перейти в каталог</a>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head reveal"><h2 class="serif">Отзывы</h2></div>
+  <div class="reviews">
+    <div class="rv reveal"><div class="stars">★★★★★</div><p>Заказывала маме на юбилей из другого города. Прислали фото до отправки, мама позвонила — плакала от радости. Спасибо!</p><footer>Екатерина</footer></div>
+    <div class="rv reveal"><div class="stars">★★★★★</div><p>Пионы простояли почти две недели. Доставили точно ко времени, курьер был очень вежливый.</p><footer>Дмитрий</footer></div>
+    <div class="rv reveal"><div class="stars">★★★★★</div><p>Беру здесь цветы уже третий год. Всегда свежие, а по фото удобно понять, что получится.</p><footer>Ольга</footer></div>
+  </div>
+</div></section>
+
+<section id="delivery" style="padding-top:0"><div class="wrap">
+  <div class="delivery reveal">
+    <div><h3 class="serif">Доставка</h3><p>По Химкам — 350 ₽, бесплатно от 5 000 ₽. В Москву и Долгопрудный — от 600 ₽. Привезём за 2 часа или к точному времени.</p></div>
+    <div><h3 class="serif">Самовывоз</h3><p>ул. Кирова, 7 · ежедневно 8:00–22:00. Букет будет готов через 30–40 минут после заказа.</p></div>
+    <div><h3 class="serif">Оплата</h3><p>Картой на сайте, по СБП или при получении. Для анонимной доставки — просто отметьте это в комментарии.</p></div>
+  </div>
+</div></section>
+
+<section class="faq" style="padding-top:0"><div class="wrap">
+  <div class="head reveal"><h2 class="serif">Вопросы</h2></div>
+  <details class="reveal"><summary class="serif">Можно добавить открытку?</summary><p>Да, бесплатно. Напишите текст в поле «Открытка» при оформлении — подпишем от руки.</p></details>
+  <details class="reveal"><summary class="serif">Что если получатель не дома?</summary><p>Курьер позвонит получателю и вам. Если никто не ответит, вернёт букет в мастерскую — договоримся о новом времени без доплаты.</p></details>
+  <details class="reveal"><summary class="serif">Соберёте букет по моей фотографии?</summary><p>Конечно. Пришлите фото в WhatsApp — подскажем цену и похожие цветы, если каких-то нет в наличии.</p></details>
+</div></section>
+
+<footer class="site"><div class="wrap">
+  <div><div class="serif" style="font-size:28px;color:#fff">Лепесток</div><small>Цветочная мастерская в Химках. Демонстрационный сайт, данные вымышлены. Фото: Unsplash.</small></div>
+  <div><b style="color:#fff">Контакты</b><br>+7 495 000-00-00<br>ул. Кирова, 7, Химки</div>
+  <div><b style="color:#fff">Режим работы</b><br>Ежедневно 8:00–22:00<br>Доставка 9:00–22:00</div>
+</div></footer>
+
+<div class="overlay" id="ov"></div>
+<aside class="drawer" aria-label="Корзина">
+  <header><h3 class="serif" style="font-size:26px">Ваш заказ</h3><button class="x" id="close" aria-label="Закрыть">×</button></header>
+  <div class="items" id="items"></div>
+  <form class="checkout" id="co" novalidate>
+    <div class="row2"><input name="name" placeholder="Ваше имя" autocomplete="name"><input name="phone" inputmode="tel" placeholder="Телефон" autocomplete="tel"></div>
+    <input name="addr" placeholder="Адрес доставки (или «самовывоз»)">
+    <div class="row2"><input name="date" type="date"><select name="time"><option>9:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–22:00</option><option>Как можно скорее</option></select></div>
+    <textarea name="card" rows="2" placeholder="Открытка: текст от руки (необязательно)"></textarea>
+    <div class="dlv"><span>Доставка</span><b id="dlv">—</b></div>
+    <div class="total"><span>Итого с доставкой</span><b id="total">0 ₽</b></div>
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn" type="submit">Оформить заказ</button>
+  </form>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const P = [
+  {id:1, n:'Розовое облако', c:'Пионы', img:'peonies', d:'Пионы, эвкалипт, крафт', p:[3900,5900,8900], lbl:'Хит'},
+  {id:2, n:'Белая нежность', c:'Розы', img:'rose-white', d:'Кустовые розы, маттиола', p:[3400,4900,7200]},
+  {id:3, n:'Классика 25 роз', c:'Розы', img:'roses', d:'Красные розы 60 см, лента', p:[4500,6900,9900]},
+  {id:4, n:'Весенний сад', c:'Тюльпаны', img:'tulips', d:'Тюльпаны микс, 25–51 шт', p:[2900,4400,6900]},
+  {id:5, n:'Солнечный день', c:'Сборные', img:'sunflowers', d:'Подсолнухи, розы, гортензия', p:[3600,5200,7800], lbl:'Новинка'},
+  {id:6, n:'Шкатулка', c:'В коробке', img:'box', d:'Розы в шляпной коробке', p:[4200,6300,8800]},
+  {id:7, n:'Невеста', c:'Сборные', img:'white-green', d:'Белые розы, зелень, лента', p:[4800,6500,8900]},
+  {id:8, n:'Сухоцветы', c:'Сухоцветы', img:'dried', d:'Стоят до года без воды', p:[2900,3900,5400]},
+  {id:9, n:'Пудровый', c:'Сборные', img:'beige', d:'Кремовые розы, диантус', p:[3700,5300,7600]},
+  {id:10, n:'В вазе', c:'Розы', img:'pink-vase', d:'Пионовидные розы в вазе', p:[3900,5600,7900]},
+  {id:11, n:'Композиция', c:'В коробке', img:'centerpiece', d:'Низкая композиция на стол', p:[3300,4700,6500]},
+  {id:12, n:'Сливочный', c:'Сборные', img:'cream', d:'Кремовые розы, эвкалипт, фетр', p:[3500,4900,7100], lbl:'Новинка'},
+];
+const SIZES = ['S', 'M', 'L'];
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+const cats = ['Все', ...new Set(P.map(x => x.c))];
+let filter = 'Все', cart = JSON.parse(localStorage.getItem('lepestok') || '[]');
+const size = {};
+const flt = document.getElementById('flt'), grid = document.getElementById('grid');
+flt.innerHTML = cats.map(c => `<button data-c="${c}" class="${c === filter ? 'on' : ''}">${c}</button>`).join('');
+function render() {
+  grid.innerHTML = P.filter(x => filter === 'Все' || x.c === filter).map(x => { const s = size[x.id] ?? 1;
+    return `<article class="card"><div class="ph"><img src="img/${x.img}.jpg" alt="${x.n}" loading="lazy">${x.lbl ? `<span class="lbl">${x.lbl}</span>` : ''}</div>
+      <div class="body"><h3>${x.n}</h3><p>${x.d}</p>
+      <div class="sizes">${SIZES.map((z, i) => `<button data-id="${x.id}" data-s="${i}" class="${i === s ? 'on' : ''}">${z}</button>`).join('')}</div>
+      <div class="buy"><b>${rub(x.p[s])}</b><button data-add="${x.id}">В корзину</button></div></div></article>`; }).join('');
+}
+flt.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; filter = b.dataset.c;
+  [...flt.children].forEach(x => x.classList.toggle('on', x === b)); render(); });
+document.querySelectorAll('.occ').forEach(o => o.addEventListener('click', () => { filter = o.dataset.f;
+  [...flt.children].forEach(x => x.classList.toggle('on', x.dataset.c === filter)); render(); document.getElementById('catalog').scrollIntoView(); }));
+grid.addEventListener('click', e => {
+  const s = e.target.closest('[data-s]'); if (s) { size[s.dataset.id] = +s.dataset.s; render(); return; }
+  const a = e.target.closest('[data-add]'); if (!a) return;
+  const x = P.find(p => p.id === +a.dataset.add), si = size[x.id] ?? 1, key = x.id + '-' + si;
+  const it = cart.find(c => c.key === key); it ? it.q++ : cart.push({key, id: x.id, s: si, q: 1});
+  save(); toast(`«${x.n}» (${SIZES[si]}) в корзине`);
+});
+const DELIVERY = 350, FREE = 5000;
+function sum() { return cart.reduce((t, c) => t + P.find(p => p.id === c.id).p[c.s] * c.q, 0); }
+function save() { localStorage.setItem('lepestok', JSON.stringify(cart)); drawCart(); }
+function drawCart() {
+  document.getElementById('cnt').textContent = cart.reduce((t, c) => t + c.q, 0);
+  const items = document.getElementById('items');
+  items.innerHTML = cart.length ? cart.map((c, i) => { const x = P.find(p => p.id === c.id);
+    return `<div class="item"><img src="img/${x.img}.jpg" alt=""><div><b>${x.n}</b><br><small>Размер ${SIZES[c.s]} · ${rub(x.p[c.s])}</small></div>
+      <div class="qty"><button data-q="${i}" data-d="-1">−</button>${c.q}<button data-q="${i}" data-d="1">+</button></div></div>`; }).join('')
+    : '<p class="empty">Корзина пуста — выберите букет в каталоге</p>';
+  const s = sum(), self = /самовывоз/i.test(document.querySelector('[name=addr]').value);
+  const dl = !s || self || s >= FREE ? 0 : DELIVERY;
+  document.getElementById('dlv').textContent = !s ? '—' : self ? 'самовывоз' : dl ? `${rub(dl)} · бесплатно от ${rub(FREE)}` : 'бесплатно';
+  document.getElementById('total').textContent = rub(s + dl);
+  document.getElementById('co').style.display = cart.length ? '' : 'none';
+}
+document.getElementById('items').addEventListener('click', e => { const b = e.target.closest('[data-q]'); if (!b) return;
+  const c = cart[+b.dataset.q]; c.q += +b.dataset.d; if (c.q <= 0) cart.splice(+b.dataset.q, 1); save(); });
+const body = document.body;
+document.getElementById('cartBtn').onclick = () => body.classList.add('open');
+document.getElementById('close').onclick = document.getElementById('ov').onclick = () => body.classList.remove('open');
+document.querySelector('[name=date]').valueAsDate = new Date();
+document.querySelector('[name=addr]').addEventListener('input', drawCart);
+document.getElementById('co').addEventListener('submit', e => { e.preventDefault(); const f = e.target;
+  if (!cart.length) return toast('Добавьте букет в корзину');
+  const bad = [];   // что не так — подсвечиваем поле и пишем словами
+  if (!f.name.value.trim()) bad.push([f.name, 'имя']);
+  if (f.phone.value.replace(/\D/g, '').length < 10) bad.push([f.phone, 'телефон (10–11 цифр)']);
+  if (f.addr.value.trim().length < 5) bad.push([f.addr, 'адрес или «самовывоз»']);
+  f.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+  if (bad.length) { bad.forEach(([el]) => el.classList.add('bad')); bad[0][0].focus();
+    document.getElementById('err').textContent = 'Заполните: ' + bad.map(b => b[1]).join(', '); return; }
+  document.getElementById('err').textContent = '';
+  const lines = cart.map(c => { const x = P.find(p => p.id === c.id); return `${x.n} (${SIZES[c.s]}) × ${c.q}`; });
+  // у небольшой мастерской заказ удобно принимать в WhatsApp: сообщение собирается само
+  const msg = `Заказ с сайта:\n${lines.join('\n')}\nИтого: ${document.getElementById('total').textContent}\n${f.name.value}, ${f.phone.value}\n${f.addr.value}\n${f.date.value} ${f.time.value}\nОткрытка: ${f.card.value || '—'}`;
+  console.log(msg);
+  const no = 'Л-' + String(Date.now()).slice(-5), total = document.getElementById('total').textContent;
+  cart = []; save(); f.reset(); f.date.valueAsDate = new Date();
+  document.getElementById('items').innerHTML = `<div class="done"><div class="ok">✓</div><h3 class="serif" style="font-size:26px">Заказ ${no} принят</h3>
+    <p>Перезвоним в течение 10 минут, а перед отправкой пришлём фото букета в WhatsApp.</p><ul>${lines.map(l => `<li>${l}</li>`).join('')}<li><b>Итого: ${total}</b></li></ul>
+    <button class="btn" type="button" onclick="document.body.classList.remove('open');drawCart()">Вернуться в каталог</button></div>`;
+});
+let tt; function toast(t) { const el = document.getElementById('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2600); }
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), {threshold: .1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+render(); drawCart();
+</script>
+</body>
+</html>

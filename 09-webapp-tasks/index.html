@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Таскборд — трекер задач команды</title>
+<style>
+:root{--bg:#f3f4f8;--panel:#fff;--line:#e4e6ee;--ink:#1c2033;--muted:#7a8099;--acc:#5b5bf6}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+aside{background:#151826;color:#c9cde0;padding:22px 16px;display:flex;flex-direction:column;gap:6px}
+aside .logo{color:#fff;font-weight:800;font-size:19px;margin:0 8px 18px}
+aside a{padding:10px 12px;border-radius:10px;color:inherit;text-decoration:none;font-size:15px}
+aside a.on{background:#262a40;color:#fff}
+aside .proj{margin-top:18px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#6b7194;padding:0 12px}
+aside .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px}
+main{padding:24px 28px;overflow:auto}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.top h1{font-size:24px;margin-right:auto}
+.search{padding:10px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;min-width:220px;background:#fff}
+.who{display:flex}.who button{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;color:#fff;font-weight:700;cursor:pointer;font-size:12px}
+.who button.off{opacity:.35}
+.add{background:var(--acc);color:#fff;border:0;border-radius:12px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat b{font-size:26px;display:block}.stat span{color:var(--muted);font-size:13px}
+.progress{height:6px;background:#eceef6;border-radius:6px;margin-top:8px;overflow:hidden}.progress i{display:block;height:100%;background:#22c55e}
+.board{display:grid;grid-template-columns:repeat(4,minmax(250px,1fr));gap:16px;align-items:start}
+.col{background:#e9ebf3;border-radius:18px;padding:12px;min-height:300px}
+.col.over{outline:2px dashed var(--acc)}
+.col h2{font-size:14px;display:flex;justify-content:space-between;padding:6px 6px 12px;color:#41465e}
+.col h2 span{background:#fff;border-radius:999px;padding:1px 9px;font-size:12px}
+.task{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(20,24,40,.06);cursor:grab;border:1px solid transparent}
+.task:hover{border-color:#c7c9ff}
+.task.drag{opacity:.4}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;margin-bottom:8px}
+.task h3{font-size:15px;font-weight:600;margin-bottom:10px}
+.task .meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.task .ava{width:24px;height:24px;border-radius:50%;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700}
+.late{color:#e11d48;font-weight:700}
+dialog{border:0;border-radius:20px;padding:24px;width:380px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+dialog form{display:grid;gap:10px}dialog input,dialog select{font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px}
+@media(max-width:900px){body{grid-template-columns:1fr}aside{display:none}.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<aside><div class="logo">▦ Таскборд</div>
+  <a class="on" href="#">Доска</a><a href="#">Мои задачи</a><a href="#">Календарь</a><a href="#">Отчёты</a>
+  <div class="proj">Проекты</div>
+  <a href="#"><span class="dot" style="background:#5b5bf6"></span>Сайт клиники</a>
+  <a href="#"><span class="dot" style="background:#f59e0b"></span>Бот доставки</a>
+  <a href="#"><span class="dot" style="background:#10b981"></span>CRM v2</a>
+</aside>
+<main>
+  <div class="top"><h1>Сайт клиники · спринт 14</h1>
+    <input class="search" id="q" placeholder="Поиск задач…">
+    <div class="who" id="who"></div>
+    <button class="add" id="addBtn">+ Задача</button></div>
+  <div class="stats" id="stats"></div>
+  <div class="board" id="board"></div>
+</main>
+<dialog id="dlg"><form method="dialog" id="newf"><b>Новая задача</b>
+  <input name="title" placeholder="Что сделать" required>
+  <select name="tag"><option>Frontend</option><option>Backend</option><option>Дизайн</option><option>Тесты</option></select>
+  <select name="who"></select><input name="due" type="date">
+  <button class="add" value="ok">Создать</button></form></dialog>
+<script>
+const PEOPLE = {ИК:'#5b5bf6', МС:'#ec4899', ДП:'#f59e0b', АВ:'#10b981'};
+const TAGS = {Frontend:['#eef2ff','#4f46e5'], Backend:['#ecfeff','#0e7490'], Дизайн:['#fdf2f8','#be185d'], Тесты:['#f0fdf4','#15803d']};
+const COLS = [['todo','К выполнению'],['work','В работе'],['review','На проверке'],['done','Готово']];
+const today = new Date('2026-11-09');
+const d = n => new Date(today.getTime() + n * 864e5).toISOString().slice(0, 10);
+let tasks = JSON.parse(localStorage.getItem('tasks') || 'null') || [
+  {id:1,title:'Шторка «до/после» на первом экране',tag:'Frontend',who:'МС',due:d(1),col:'work'},
+  {id:2,title:'Форма записи → письмо и Telegram',tag:'Backend',who:'ИК',due:d(2),col:'work'},
+  {id:3,title:'Макет страницы «Гнатология»',tag:'Дизайн',who:'АВ',due:d(-1),col:'review'},
+  {id:4,title:'Цели Яндекс Метрики на форму',tag:'Frontend',who:'МС',due:d(3),col:'todo'},
+  {id:5,title:'Адаптив под 360 px',tag:'Frontend',who:'МС',due:d(4),col:'todo'},
+  {id:6,title:'Проверка формы на спам-ботов',tag:'Тесты',who:'ДП',due:d(2),col:'todo'},
+  {id:7,title:'Сжатие фото врачей в WebP',tag:'Frontend',who:'ДП',due:d(-2),col:'done'},
+  {id:8,title:'Деплой на хостинг клиента',tag:'Backend',who:'ИК',due:d(5),col:'todo'},
+  {id:9,title:'Тексты FAQ от клиники',tag:'Дизайн',who:'АВ',due:d(0),col:'done'}];
+let hidden = new Set(), drag = null;
+const save = () => localStorage.setItem('tasks', JSON.stringify(tasks));
+function render() {
+  const q = document.getElementById('q').value.toLowerCase();
+  const vis = tasks.filter(t => !hidden.has(t.who) && t.title.toLowerCase().includes(q));
+  const done = tasks.filter(t => t.col === 'done').length, late = tasks.filter(t => t.col !== 'done' && t.due < d(0)).length;
+  document.getElementById('stats').innerHTML =
+    `<div class="stat"><b>${tasks.length}</b><span>задач в спринте</span></div>
+     <div class="stat"><b>${tasks.filter(t => t.col === 'work').length}</b><span>в работе</span></div>
+     <div class="stat"><b style="color:${late ? '#e11d48' : 'inherit'}">${late}</b><span>просрочено</span></div>
+     <div class="stat"><b>${Math.round(done / tasks.length * 100)}%</b><span>спринта готово</span><div class="progress"><i style="width:${done / tasks.length * 100}%"></i></div></div>`;
+  document.getElementById('board').innerHTML = COLS.map(([k, name]) => {
+    const list = vis.filter(t => t.col === k);
+    return `<div class="col" data-col="${k}"><h2>${name}<span>${list.length}</span></h2>` + list.map(t => {
+      const [bg, fg] = TAGS[t.tag], isLate = t.col !== 'done' && t.due < d(0);
+      return `<div class="task" draggable="true" data-id="${t.id}"><span class="tag" style="background:${bg};color:${fg}">${t.tag}</span>
+        <h3>${t.title}</h3><div class="meta"><span class="${isLate ? 'late' : ''}">📅 ${t.due.slice(8)}.${t.due.slice(5, 7)}${isLate ? ' · просрочено' : ''}</span>
+        <span class="ava" style="background:${PEOPLE[t.who]}">${t.who}</span></div></div>`;
+    }).join('') + '</div>';
+  }).join('');
+}
+document.getElementById('who').innerHTML = Object.entries(PEOPLE).map(([k, c]) => `<button data-p="${k}" style="background:${c}" title="Показать/скрыть">${k}</button>`).join('');
+document.getElementById('who').addEventListener('click', e => { const p = e.target.dataset.p; if (!p) return; hidden.has(p) ? hidden.delete(p) : hidden.add(p); e.target.classList.toggle('off'); render(); });
+document.getElementById('q').addEventListener('input', render);
+const board = document.getElementById('board');
+board.addEventListener('dragstart', e => { drag = +e.target.dataset.id; e.target.classList.add('drag'); });
+board.addEventListener('dragend', e => e.target.classList?.remove('drag'));
+board.addEventListener('dragover', e => { const c = e.target.closest('.col'); if (c) { e.preventDefault(); c.classList.add('over'); } });
+board.addEventListener('dragleave', e => e.target.closest('.col')?.classList.remove('over'));
+board.addEventListener('drop', e => { const c = e.target.closest('.col'); if (!c) return; tasks.find(t => t.id === drag).col = c.dataset.col; save(); render(); });
+const dlg = document.getElementById('dlg'), nf = document.getElementById('newf');
+nf.who.innerHTML = Object.keys(PEOPLE).map(p => `<option>${p}</option>`).join('');
+document.getElementById('addBtn').onclick = () => { nf.reset(); nf.due.value = d(3); dlg.showModal(); };
+dlg.addEventListener('close', () => { if (dlg.returnValue !== 'ok' || !nf.title.value.trim()) return;
+  tasks.push({id: Date.now(), title: nf.title.value.trim(), tag: nf.tag.value, who: nf.who.value, due: nf.due.value, col: 'todo'}); save(); render(); });
+render();
+</script>
+</body>
+</html>

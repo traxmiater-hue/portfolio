@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Вход{% endblock %}
+{% block bare %}
+<div class="login">
+  <form method="post" class="card">
+    <div class="brand big"><span>◆</span> Поток CRM</div>
+    <p class="muted">Войдите, чтобы увидеть заявки</p>
+    {% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <label>Логин<input name="login" autocomplete="username" autofocus required></label>
+    <label>Пароль<input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="btn primary wide">Войти</button>
+    <p class="hint">Демо-доступ: <code>admin</code> / <code>demo123</code></p>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Новая заявка' if is_new else lead.name }}{% endblock %}
+{% block content %}
+<header class="head">
+  <div>
+    <a class="muted back" href="{{ url_for('leads') }}">← Все заявки</a>
+    <h1>{{ 'Новая заявка' if is_new else lead.name }}</h1>
+    {% if not is_new %}<p class="muted">№{{ lead.id }} · создана {{ lead.created|dt }} · обновлена {{ lead.updated|dt }}</p>{% endif %}
+  </div>
+  {% if not is_new %}<span class="pill big" style="--c:{{ STATUSES[lead.status][1] }}">{{ STATUSES[lead.status][0] }}</span>{% endif %}
+</header>
+
+<div class="grid2 wide-left">
+  <form method="post" class="card form">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="row2">
+      <label>Имя клиента *<input name="name" value="{{ lead.name or '' }}" required></label>
+      <label>Компания<input name="company" value="{{ lead.company or '' }}"></label>
+    </div>
+    <div class="row2">
+      <label>Телефон<input name="phone" value="{{ lead.phone or '' }}" type="tel"></label>
+      <label>Email<input name="email" value="{{ lead.email or '' }}" type="email"></label>
+    </div>
+    <div class="row3">
+      <label>Статус<select name="status">
+        {% for k, (label, _) in STATUSES.items() %}<option value="{{ k }}" {{ 'selected' if lead.status == k }}>{{ label }}</option>{% endfor %}</select></label>
+      <label>Источник<select name="source">
+        {% for s in SOURCES %}<option {{ 'selected' if lead.source == s }}>{{ s }}</option>{% endfor %}</select></label>
+      <label>Сумма, ₽<input name="amount" value="{{ lead.amount or 0 }}" inputmode="numeric" pattern="\d*"></label>
+    </div>
+    <label>Менеджер<select name="manager_id"><option value="">— не назначен —</option>
+      {% for m in managers %}<option value="{{ m.id }}" {{ 'selected' if lead.manager_id == m.id }}>{{ m.name }}</option>{% endfor %}</select></label>
+    <label>Комментарий<textarea name="note" rows="3">{{ lead.note or '' }}</textarea></label>
+    <div class="actions">
+      <button class="btn primary">{{ 'Создать заявку' if is_new else 'Сохранить' }}</button>
+      {% if not is_new and user.role == 'admin' %}
+        <button class="btn danger" formaction="{{ url_for('delete', lead_id=lead.id) }}"
+                data-confirm="Удалить заявку №{{ lead.id }} без возможности восстановления?">Удалить</button>
+      {% endif %}
+    </div>
+  </form>
+
+  {% if not is_new %}
+  <div class="card" id="history">
+    <h2>История</h2>
+    <form method="post" action="{{ url_for('comment', lead_id=lead.id) }}" class="add-comment">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <textarea name="text" rows="2" placeholder="Что сделали? Например: «Позвонил, отправил КП»" required></textarea>
+      <button class="btn">Добавить</button>
+    </form>
+    <ul class="timeline">
+      {% for e in events %}
+      <li class="{{ e.kind }}"><span>{{ e.text }}</span><small class="muted">{{ e.user_name or 'система' }} · {{ e.created|dt }}</small></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Блог «Точка опоры» — статьи о карьере и работе</title>
+<meta name="description" content="Статьи о карьере, выгорании и смене профессии.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="progress"></div>
+<header class="site"><div class="wrap"><a class="brand" href="index.html">Точка <span>опоры</span></a>
+<nav><a href="index.html">Все статьи</a><a href="index.html#rub=psy">Психология работы</a><a href="index.html#rub=career">Карьера</a></nav></div></header>
+<main class="wrap">
+<section class="bloghero"><span class="chip">Блог</span><h1>Статьи о работе, карьере и о том, как не выгореть</h1>
+<p>Практичные разборы без воды: как распознать выгорание, сменить профессию и выстроить работу, которая не отнимает все силы.</p></section>
+<div class="tools"><button class="on">Все</button><button class="">Карьера</button><button class="">Психология работы</button>
+<input type="search" placeholder="Поиск по статьям" aria-label="Поиск по статьям"></div>
+<div class="cards"><a class="card" href="smena-professii-plan/index.html" data-rubric="Карьера"><img src="img/career-cover.webp" alt="Команда обсуждает проект за столом — статья о смене профессии после 35" width="1200" height="630" loading="lazy"><div><span class="chip">Карьера</span><h3>Как сменить профессию после 35 и не потерять доход: план на 6 месяцев</h3><p>Пошаговый план смены профессии после 35: аудит навыков, план по месяцам, как сохранить доход и каких ошибок избежать.</p><small>10 ноября 2026 · 8 мин</small></div></a><a class="card" href="vygoranie-priznaki/index.html" data-rubric="Психология работы"><img src="img/burnout-cover.webp" alt="Рабочий стол с ноутбуком и чашкой кофе — статья о выгорании на работе" width="1200" height="630" loading="lazy"><div><span class="chip">Психология работы</span><h3>Выгорание на работе: 7 признаков, которые легко принять за обычную усталость</h3><p>Как отличить выгорание от усталости: 7 признаков, почему оно чаще настигает ответственных людей и что делать по шагам.</p><small>3 ноября 2026 · 7 мин</small></div></a></div>
+<p class="empty">Ничего не нашлось — попробуйте другой запрос.</p>
+</main>
+<footer class="site"><div class="wrap"><span>© 2026 Точка опоры — демонстрационный блог. Автор и тексты — пример вёрстки.</span><span>Фото: Unsplash</span></div></footer>
+<button class="up" aria-label="Наверх">↑</button>
+<script>
+const cards=[...document.querySelectorAll('.card')],btns=[...document.querySelectorAll('.tools button')],q=document.querySelector('.tools input');
+let rub='Все';
+function apply(){const s=q.value.trim().toLowerCase();let n=0;cards.forEach(c=>{const ok=(rub==='Все'||c.dataset.rubric===rub)&&c.textContent.toLowerCase().includes(s);c.style.display=ok?'':'none';n+=ok});
+ document.querySelector('.empty').style.display=n?'none':'block'}
+function pick(r){rub=r;btns.forEach(x=>x.classList.toggle('on',x.textContent===r));apply()}
+btns.forEach(b=>b.onclick=()=>pick(b.textContent));q.oninput=apply;
+const H={'#rub=psy':'Психология работы','#rub=career':'Карьера'};function fromHash(){if(H[location.hash])pick(H[location.hash])}addEventListener('hashchange',fromHash);fromHash();
+const up=document.querySelector('.up');addEventListener('scroll',()=>up.classList.toggle('show',scrollY>900));up.onclick=()=>scrollTo({top:0});</script>
+</body>
+</html>
